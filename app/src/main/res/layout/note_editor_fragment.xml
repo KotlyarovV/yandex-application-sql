@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingLeft="@dimen/editor_horizontal_padding"
+    android:paddingRight="@dimen/editor_horizontal_padding"
+    android:paddingBottom="@dimen/editor_vertical_padding"
+    android:paddingTop="@dimen/editor_vertical_padding"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/date_editor"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <EditText
+        app:layout_constraintTop_toBottomOf="@id/date_editor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/date_editor"
+        android:id="@+id/caption_editor"
+        android:visibility="visible"
+        android:minLines="2"
+        android:background="@color/caption_editor_color"
+        android:focusable="true"
+        />
+
+    <EditText
+        android:layout_marginTop="10dp"
+        android:inputType="textMultiLine"
+        android:gravity="start"
+        android:minLines="2"
+        android:lines="20"
+        android:background="@color/description_editor_color"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/caption_editor"
+        app:layout_constraintBottom_toTopOf="@id/save"
+        android:layout_below="@id/caption_editor"
+        android:layout_above="@id/save"
+        android:id="@+id/description_editor"
+        android:scrollbars="vertical"
+        />
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/delete"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/save_string" />
+
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"
+        android:text="@string/delete_string"
+        />
+
+</android.support.constraint.ConstraintLayout>

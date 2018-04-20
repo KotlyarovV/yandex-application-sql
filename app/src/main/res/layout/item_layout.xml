@@ -1,0 +1,68 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/list_item_height"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/color"
+        android:layout_width="@dimen/list_item_square_side"
+        android:layout_height="@dimen/list_item_square_side"
+        app:layout_constraintTop_toTopOf="@+id/caption"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="@dimen/list_item_square_margin_start"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:fontFamily="sans-serif"
+        android:id="@+id/caption"
+        android:textSize="@dimen/list_item_caption_text_size"
+        android:layout_marginTop="@dimen/list_item_caption_margin_top"
+        android:textColor="@color/black"
+        android:layout_marginStart="@dimen/list_item_caption_margin_start"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:layout_gravity="start"
+        />
+
+    <TextView
+        app:layout_constraintTop_toBottomOf="@id/caption"
+        app:layout_constraintStart_toStartOf="@id/caption"
+        app:layout_constraintEnd_toStartOf="@id/date"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:fontFamily="sans-serif"
+        android:id="@+id/description"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textSize="@dimen/list_item_desription_text_size"
+        android:layout_marginEnd="@dimen/list_item_description_margin_end"
+        android:layout_marginBottom="@dimen/list_item_description_margin_bottom"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/caption"
+        app:layout_constraintRight_toRightOf="parent"
+        android:singleLine="true"
+        android:id="@+id/time"
+        android:textSize="@dimen/list_item_desription_text_size"
+        android:layout_marginEnd="@dimen/list_item_description_margin_end"
+        />
+
+    <TextView
+        app:layout_constraintTop_toBottomOf="@id/time"
+        app:layout_constraintRight_toRightOf="@id/time"
+        android:singleLine="true"
+        android:id="@+id/date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/list_item_desription_text_size"
+        />
+
+</android.support.constraint.ConstraintLayout>

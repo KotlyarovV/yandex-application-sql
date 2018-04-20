@@ -1,0 +1,1292 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 142082048 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2640), pid=3514, tid=0x00007fee3e8e8700
+#
+# JRE version: OpenJDK Runtime Environment (8.0_152-b01) (build 1.8.0_152-release-915-b01)
+# Java VM: OpenJDK 64-Bit Server VM (25.152-b01 mixed mode linux-amd64 compressed oops)
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007fee6c080800):  VMThread [stack: 0x00007fee3e7e8000,0x00007fee3e8e9000] [id=3527]
+
+Stack: [0x00007fee3e7e8000,0x00007fee3e8e9000],  sp=0x00007fee3e8e74c0,  free space=1021k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0x9eb15d]  VMError::report_and_die()+0x15d
+V  [libjvm.so+0x4b8eaa]  report_vm_out_of_memory(char const*, int, unsigned long, VMErrorType, char const*)+0x8a
+V  [libjvm.so+0x851370]  os::pd_commit_memory(char*, unsigned long, unsigned long, bool)+0xf0
+V  [libjvm.so+0x84be8f]  os::commit_memory(char*, unsigned long, unsigned long, bool)+0x1f
+V  [libjvm.so+0x8c261b]  PSVirtualSpace::expand_by(unsigned long)+0x5b
+V  [libjvm.so+0x8c3290]  PSYoungGen::resize_generation(unsigned long, unsigned long)+0xb0
+V  [libjvm.so+0x8c35ab]  PSYoungGen::resize(unsigned long, unsigned long)+0x1b
+V  [libjvm.so+0x8bfc9c]  PSScavenge::invoke_no_policy()+0xdac
+V  [libjvm.so+0x8c0478]  PSScavenge::invoke()+0x38
+V  [libjvm.so+0x8748f3]  ParallelScavengeHeap::failed_mem_allocate(unsigned long)+0x63
+V  [libjvm.so+0x9ecc84]  VM_ParallelGCFailedAllocation::doit()+0x84
+V  [libjvm.so+0x9f1197]  VM_Operation::evaluate()+0x47
+V  [libjvm.so+0x9efb78]  VMThread::evaluate_operation(VM_Operation*)+0x2c8
+V  [libjvm.so+0x9efff9]  VMThread::loop()+0x219
+V  [libjvm.so+0x9f0442]  VMThread::run()+0x72
+V  [libjvm.so+0x84e792]  java_start(Thread*)+0xf2
+
+VM_Operation (0x00007feddd5553e0): ParallelGCFailedAllocation, mode: safepoint, requested by thread 0x00007fed5c177800
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00007fedb401f800 JavaThread "Worker Daemon Execution Thread 6" [_thread_blocked, id=3892, stack(0x00007feddc441000,0x00007feddc542000)]
+  0x00007fedb401e800 JavaThread "Worker Daemon Execution Thread 5" [_thread_blocked, id=3891, stack(0x00007feddc542000,0x00007feddc643000)]
+  0x00007fedb401d800 JavaThread "Worker Daemon Execution Thread 4" [_thread_blocked, id=3890, stack(0x00007fed93dfe000,0x00007fed93eff000)]
+  0x00007fedb401c000 JavaThread "Worker Daemon Execution Thread 3" [_thread_blocked, id=3889, stack(0x00007feddc340000,0x00007feddc441000)]
+  0x00007fedb401b800 JavaThread "Worker Daemon Execution Thread 2" [_thread_blocked, id=3888, stack(0x00007feddd357000,0x00007feddd458000)]
+  0x00007fedb401b000 JavaThread "Worker Daemon Execution" [_thread_blocked, id=3887, stack(0x00007feddcf53000,0x00007feddd054000)]
+  0x00007fed5c48d800 JavaThread "Task worker for ':' Thread 7" [_thread_blocked, id=3882, stack(0x00007feddd559000,0x00007feddd65a000)]
+  0x00007fed5c48c800 JavaThread "Task worker for ':' Thread 6" [_thread_blocked, id=3881, stack(0x00007feddd054000,0x00007feddd155000)]
+  0x00007fed5c17a800 JavaThread "Task worker for ':' Thread 5" [_thread_blocked, id=3880, stack(0x00007feddccaa000,0x00007feddcdab000)]
+  0x00007fed5c179800 JavaThread "Task worker for ':' Thread 4" [_thread_blocked, id=3879, stack(0x00007feddd155000,0x00007feddd256000)]
+  0x00007fed5c179000 JavaThread "Task worker for ':' Thread 3" [_thread_blocked, id=3878, stack(0x00007feddd256000,0x00007feddd357000)]
+  0x00007fed5c178000 JavaThread "Task worker for ':' Thread 2" [_thread_blocked, id=3877, stack(0x00007feddd65a000,0x00007feddd75b000)]
+  0x00007fed5c177800 JavaThread "Task worker for ':'" [_thread_blocked, id=3876, stack(0x00007feddd458000,0x00007feddd559000)]
+  0x00007fed5c18d000 JavaThread "Cache worker for task history cache (/home/vitaly/StudioProjects/yandex-application/.gradle/4.1/taskHistory)" [_thread_blocked, id=3875, stack(0x00007fed92f9b000,0x00007fed9309c000)]
+  0x00007fed5c188000 JavaThread "build operations Thread 8" [_thread_blocked, id=3874, stack(0x00007feddf6ff000,0x00007feddf800000)]
+  0x00007fed5c187800 JavaThread "build operations Thread 7" [_thread_blocked, id=3873, stack(0x00007feddf4fd000,0x00007feddf5fe000)]
+  0x00007fed5c4ac000 JavaThread "build operations Thread 6" [_thread_blocked, id=3872, stack(0x00007feddf1fa000,0x00007feddf2fb000)]
+  0x00007fed5c4ab000 JavaThread "build operations Thread 5" [_thread_blocked, id=3871, stack(0x00007feddf2fb000,0x00007feddf3fc000)]
+  0x00007fed5c4aa800 JavaThread "build operations Thread 4" [_thread_blocked, id=3870, stack(0x00007feddf5fe000,0x00007feddf6ff000)]
+  0x00007fed5c002000 JavaThread "build operations Thread 3" [_thread_blocked, id=3869, stack(0x00007fee34004000,0x00007fee34105000)]
+  0x00007fed5c001000 JavaThread "build operations Thread 2" [_thread_blocked, id=3868, stack(0x00007feddeff8000,0x00007feddf0f9000)]
+  0x00007fed5c3be000 JavaThread "build operations" [_thread_blocked, id=3867, stack(0x00007feddf0f9000,0x00007feddf1fa000)]
+  0x00007fed5c709000 JavaThread "Cache worker for Artifact transforms cache (/home/vitaly/.gradle/caches/transforms-1)" [_thread_blocked, id=3865, stack(0x00007feddf3fc000,0x00007feddf4fd000)]
+  0x00007fed5c708000 JavaThread "Cache worker for file hash cache (/home/vitaly/StudioProjects/yandex-application/.gradle/4.1/fileHashes)" [_thread_blocked, id=3863, stack(0x00007fee347f9000,0x00007fee348fa000)]
+  0x00007fed5c003000 JavaThread "Stdin handler" [_thread_blocked, id=3862, stack(0x00007fee34cfc000,0x00007fee34dfd000)]
+  0x00007fed5c3c4800 JavaThread "Asynchronous log dispatcher for DefaultDaemonConnection: socket connection from /127.0.0.1:42123 to /127.0.0.1:47624" [_thread_blocked, id=3861, stack(0x00007fee34dfd000,0x00007fee34efe000)]
+  0x00007fedf8005800 JavaThread "Cancel handler" [_thread_blocked, id=3858, stack(0x00007fee3c11f000,0x00007fee3c220000)]
+  0x00007fedf8007000 JavaThread "Handler for socket connection from /127.0.0.1:42123 to /127.0.0.1:47624" [_thread_in_native, id=3856, stack(0x00007fee34efe000,0x00007fee34fff000)]
+  0x00007fedf800a800 JavaThread "Daemon worker Thread 2" [_thread_blocked, id=3836, stack(0x00007fee3c01e000,0x00007fee3c11f000)]
+  0x00007fee00043800 JavaThread "Daemon Thread 2" [_thread_blocked, id=3833, stack(0x00007fee3c220000,0x00007fee3c321000)]
+  0x00007fedf50cf800 JavaThread "Memory manager" [_thread_blocked, id=3569, stack(0x00007fedde570000,0x00007fedde671000)]
+  0x00007fedf4116000 JavaThread "File lock request listener" [_thread_in_native, id=3555, stack(0x00007fee348fa000,0x00007fee349fb000)]
+  0x00007fedf410e000 JavaThread "Cache worker for file hash cache (/home/vitaly/.gradle/caches/4.1/fileHashes)" [_thread_blocked, id=3554, stack(0x00007fee349fb000,0x00007fee34afc000)]
+  0x00007fee6cca4800 JavaThread "Daemon periodic checks" [_thread_blocked, id=3545, stack(0x00007fee3c321000,0x00007fee3c422000)]
+  0x00007fee6cc7b800 JavaThread "Incoming local TCP Connector on port 42123" [_thread_in_native, id=3544, stack(0x00007fee3c429000,0x00007fee3c52a000)]
+  0x00007fee6c0ca800 JavaThread "Service Thread" daemon [_thread_blocked, id=3542, stack(0x00007fee3dbd6000,0x00007fee3dcd7000)]
+  0x00007fee6c0c7800 JavaThread "C1 CompilerThread3" daemon [_thread_blocked, id=3541, stack(0x00007fee3dcd7000,0x00007fee3ddd8000)]
+  0x00007fee6c0c5800 JavaThread "C2 CompilerThread2" daemon [_thread_blocked, id=3540, stack(0x00007fee3ddd8000,0x00007fee3ded9000)]
+  0x00007fee6c0c3800 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=3539, stack(0x00007fee3ded9000,0x00007fee3dfda000)]
+  0x00007fee6c0c0800 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=3538, stack(0x00007fee3dfda000,0x00007fee3e0db000)]
+  0x00007fee6c0bf800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=3537, stack(0x00007fee3e0db000,0x00007fee3e1dc000)]
+  0x00007fee6c08c800 JavaThread "Finalizer" daemon [_thread_blocked, id=3536, stack(0x00007fee3e5e6000,0x00007fee3e6e7000)]
+  0x00007fee6c088000 JavaThread "Reference Handler" daemon [_thread_blocked, id=3532, stack(0x00007fee3e6e7000,0x00007fee3e7e8000)]
+  0x00007fee6c00a800 JavaThread "main" [_thread_blocked, id=3518, stack(0x00007fee73151000,0x00007fee73252000)]
+
+Other Threads:
+=>0x00007fee6c080800 VMThread [stack: 0x00007fee3e7e8000,0x00007fee3e8e9000] [id=3527]
+  0x00007fee6c0cd000 WatcherThread [stack: 0x00007fee3dad5000,0x00007fee3dbd6000] [id=3543]
+
+VM state:at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007fee6c006f30] Threads_lock - owner thread: 0x00007fee6c080800
+[0x00007fee6c007430] Heap_lock - owner thread: 0x00007fed5c177800
+
+Heap:
+ PSYoungGen      total 363008K, used 21478K [0x00000000e0000000, 0x00000000f7880000, 0x0000000100000000)
+  eden space 341504K, 0% used [0x00000000e0000000,0x00000000e0000000,0x00000000f4d80000)
+  from space 21504K, 99% used [0x00000000f4d80000,0x00000000f6279a20,0x00000000f6280000)
+  to   space 18944K, 0% used [0x00000000f6280000,0x00000000f6280000,0x00000000f7500000)
+ ParOldGen       total 69632K, used 63818K [0x00000000a0000000, 0x00000000a4400000, 0x00000000e0000000)
+  object space 69632K, 91% used [0x00000000a0000000,0x00000000a3e52ae8,0x00000000a4400000)
+ Metaspace       used 70764K, capacity 74546K, committed 74712K, reserved 1114112K
+  class space    used 9242K, capacity 10197K, committed 10240K, reserved 1048576K
+
+Card table byte_map: [0x00007fee7009c000,0x00007fee7039d000] byte_map_base: 0x00007fee6fb9c000
+
+Marking Bits: (ParMarkBitMap*) 0x00007fee726203e0
+ Begin Bits: [0x00007fee4d000000, 0x00007fee4e800000)
+ End Bits:   [0x00007fee4e800000, 0x00007fee50000000)
+
+Polling page: 0x00007fee73274000
+
+CodeCache: size=245760Kb used=34609Kb max_used=35083Kb free=211150Kb
+ bounds [0x00007fee5d000000, 0x00007fee5f280000, 0x00007fee6c000000]
+ total_blobs=10924 nmethods=10104 adapters=733
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 179,757 Thread 0x00007fee6c0c7800 nmethod 12103 0x00007fee5d67db90 code [0x00007fee5d67dd00, 0x00007fee5d67dfc8]
+Event: 179,757 Thread 0x00007fee6c0c7800 12107       3       com.android.utils.PositionXmlParser::getPosition (7 bytes)
+Event: 179,758 Thread 0x00007fee6c0c7800 nmethod 12107 0x00007fee5d19a1d0 code [0x00007fee5d19a360, 0x00007fee5d19a5b8]
+Event: 179,758 Thread 0x00007fee6c0c7800 12108       3       com.android.utils.PositionXmlParser::getPosition (22 bytes)
+Event: 179,758 Thread 0x00007fee6c0c7800 nmethod 12108 0x00007fee5d6c9090 code [0x00007fee5d6c9220, 0x00007fee5d6c9418]
+Event: 179,758 Thread 0x00007fee6c0c7800 12106       3       com.android.ide.common.blame.SourceFilePosition::equals (55 bytes)
+Event: 179,758 Thread 0x00007fee6c0c7800 nmethod 12106 0x00007fee5e0216d0 code [0x00007fee5e0218a0, 0x00007fee5e021ff8]
+Event: 179,758 Thread 0x00007fee6c0c7800 12109       3       com.android.utils.PositionXmlParser::getPositionHelper (757 bytes)
+Event: 179,759 Thread 0x00007fee6c0c5800 nmethod 12104 0x00007fee5dab3fd0 code [0x00007fee5dab4140, 0x00007fee5dab42c8]
+Event: 179,759 Thread 0x00007fee6c0c5800 12111       4       com.sun.org.apache.xerces.internal.dom.CoreDocumentImpl::getUserData (54 bytes)
+
+GC Heap History (10 events):
+Event: 11,714 GC heap after
+Heap after GC invocations=13 (full 2):
+ PSYoungGen      total 182272K, used 11232K [0x00000000e0000000, 0x00000000f1080000, 0x0000000100000000)
+  eden space 171008K, 0% used [0x00000000e0000000,0x00000000e0000000,0x00000000ea700000)
+  from space 11264K, 99% used [0x00000000ea700000,0x00000000eb1f8330,0x00000000eb200000)
+  to   space 14336K, 0% used [0x00000000f0280000,0x00000000f0280000,0x00000000f1080000)
+ ParOldGen       total 39936K, used 18608K [0x00000000a0000000, 0x00000000a2700000, 0x00000000e0000000)
+  object space 39936K, 46% used [0x00000000a0000000,0x00000000a122c280,0x00000000a2700000)
+ Metaspace       used 45717K, capacity 46534K, committed 46808K, reserved 1089536K
+  class space    used 6106K, capacity 6392K, committed 6400K, reserved 1048576K
+}
+Event: 39,419 GC heap before
+{Heap before GC invocations=14 (full 2):
+ PSYoungGen      total 182272K, used 182240K [0x00000000e0000000, 0x00000000f1080000, 0x0000000100000000)
+  eden space 171008K, 100% used [0x00000000e0000000,0x00000000ea700000,0x00000000ea700000)
+  from space 11264K, 99% used [0x00000000ea700000,0x00000000eb1f8330,0x00000000eb200000)
+  to   space 14336K, 0% used [0x00000000f0280000,0x00000000f0280000,0x00000000f1080000)
+ ParOldGen       total 39936K, used 18608K [0x00000000a0000000, 0x00000000a2700000, 0x00000000e0000000)
+  object space 39936K, 46% used [0x00000000a0000000,0x00000000a122c280,0x00000000a2700000)
+ Metaspace       used 55001K, capacity 57008K, committed 57176K, reserved 1099776K
+  class space    used 7269K, capacity 7753K, committed 7808K, reserved 1048576K
+Event: 39,448 GC heap after
+Heap after GC invocations=14 (full 2):
+ PSYoungGen      total 259072K, used 14331K [0x00000000e0000000, 0x00000000f1600000, 0x0000000100000000)
+  eden space 244736K, 0% used [0x00000000e0000000,0x00000000e0000000,0x00000000eef00000)
+  from space 14336K, 99% used [0x00000000f0280000,0x00000000f107eff8,0x00000000f1080000)
+  to   space 19968K, 0% used [0x00000000eef00000,0x00000000eef00000,0x00000000f0280000)
+ ParOldGen       total 39936K, used 27264K [0x00000000a0000000, 0x00000000a2700000, 0x00000000e0000000)
+  object space 39936K, 68% used [0x00000000a0000000,0x00000000a1aa0120,0x00000000a2700000)
+ Metaspace       used 55001K, capacity 57008K, committed 57176K, reserved 1099776K
+  class space    used 7269K, capacity 7753K, committed 7808K, reserved 1048576K
+}
+Event: 41,393 GC heap before
+{Heap before GC invocations=15 (full 2):
+ PSYoungGen      total 259072K, used 124802K [0x00000000e0000000, 0x00000000f1600000, 0x0000000100000000)
+  eden space 244736K, 45% used [0x00000000e0000000,0x00000000e6be1aa0,0x00000000eef00000)
+  from space 14336K, 99% used [0x00000000f0280000,0x00000000f107eff8,0x00000000f1080000)
+  to   space 19968K, 0% used [0x00000000eef00000,0x00000000eef00000,0x00000000f0280000)
+ ParOldGen       total 39936K, used 27264K [0x00000000a0000000, 0x00000000a2700000, 0x00000000e0000000)
+  object space 39936K, 68% used [0x00000000a0000000,0x00000000a1aa0120,0x00000000a2700000)
+ Metaspace       used 56814K, capacity 58812K, committed 58968K, reserved 1099776K
+  class space    used 7466K, capacity 7971K, committed 8064K, reserved 1048576K
+Event: 41,413 GC heap after
+Heap after GC invocations=15 (full 2):
+ PSYoungGen      total 264704K, used 9868K [0x00000000e0000000, 0x00000000f7500000, 0x0000000100000000)
+  eden space 244736K, 0% used [0x00000000e0000000,0x00000000e0000000,0x00000000eef00000)
+  from space 19968K, 49% used [0x00000000eef00000,0x00000000ef8a3150,0x00000000f0280000)
+  to   space 18944K, 0% used [0x00000000f6280000,0x00000000f6280000,0x00000000f7500000)
+ ParOldGen       total 39936K, used 34166K [0x00000000a0000000, 0x00000000a2700000, 0x00000000e0000000)
+  object space 39936K, 85% used [0x00000000a0000000,0x00000000a215d9b8,0x00000000a2700000)
+ Metaspace       used 56814K, capacity 58812K, committed 58968K, reserved 1099776K
+  class space    used 7466K, capacity 7971K, committed 8064K, reserved 1048576K
+}
+Event: 41,413 GC heap before
+{Heap before GC invocations=16 (full 3):
+ PSYoungGen      total 264704K, used 9868K [0x00000000e0000000, 0x00000000f7500000, 0x0000000100000000)
+  eden space 244736K, 0% used [0x00000000e0000000,0x00000000e0000000,0x00000000eef00000)
+  from space 19968K, 49% used [0x00000000eef00000,0x00000000ef8a3150,0x00000000f0280000)
+  to   space 18944K, 0% used [0x00000000f6280000,0x00000000f6280000,0x00000000f7500000)
+ ParOldGen       total 39936K, used 34166K [0x00000000a0000000, 0x00000000a2700000, 0x00000000e0000000)
+  object space 39936K, 85% used [0x00000000a0000000,0x00000000a215d9b8,0x00000000a2700000)
+ Metaspace       used 56814K, capacity 58812K, committed 58968K, reserved 1099776K
+  class space    used 7466K, capacity 7971K, committed 8064K, reserved 1048576K
+Event: 41,564 GC heap after
+Heap after GC invocations=16 (full 3):
+ PSYoungGen      total 264704K, used 0K [0x00000000e0000000, 0x00000000f7500000, 0x0000000100000000)
+  eden space 244736K, 0% used [0x00000000e0000000,0x00000000e0000000,0x00000000eef00000)
+  from space 19968K, 0% used [0x00000000eef00000,0x00000000eef00000,0x00000000f0280000)
+  to   space 18944K, 0% used [0x00000000f6280000,0x00000000f6280000,0x00000000f7500000)
+ ParOldGen       total 69632K, used 35067K [0x00000000a0000000, 0x00000000a4400000, 0x00000000e0000000)
+  object space 69632K, 50% used [0x00000000a0000000,0x00000000a223ef00,0x00000000a4400000)
+ Metaspace       used 56814K, capacity 58812K, committed 58968K, reserved 1099776K
+  class space    used 7466K, capacity 7971K, committed 8064K, reserved 1048576K
+}
+Event: 160,021 GC heap before
+{Heap before GC invocations=17 (full 3):
+ PSYoungGen      total 264704K, used 244736K [0x00000000e0000000, 0x00000000f7500000, 0x0000000100000000)
+  eden space 244736K, 100% used [0x00000000e0000000,0x00000000eef00000,0x00000000eef00000)
+  from space 19968K, 0% used [0x00000000eef00000,0x00000000eef00000,0x00000000f0280000)
+  to   space 18944K, 0% used [0x00000000f6280000,0x00000000f6280000,0x00000000f7500000)
+ ParOldGen       total 69632K, used 35067K [0x00000000a0000000, 0x00000000a4400000, 0x00000000e0000000)
+  object space 69632K, 50% used [0x00000000a0000000,0x00000000a223ef00,0x00000000a4400000)
+ Metaspace       used 64342K, capacity 67066K, committed 67288K, reserved 1107968K
+  class space    used 8410K, capacity 9101K, committed 9216K, reserved 1048576K
+Event: 160,043 GC heap after
+Heap after GC invocations=17 (full 3):
+ PSYoungGen      total 360448K, used 17426K [0x00000000e0000000, 0x00000000f7880000, 0x0000000100000000)
+  eden space 341504K, 0% used [0x00000000e0000000,0x00000000e0000000,0x00000000f4d80000)
+  from space 18944K, 91% used [0x00000000f6280000,0x00000000f7384ad0,0x00000000f7500000)
+  to   space 21504K, 0% used [0x00000000f4d80000,0x00000000f4d80000,0x00000000f6280000)
+ ParOldGen       total 69632K, used 35075K [0x00000000a0000000, 0x00000000a4400000, 0x00000000e0000000)
+  object space 69632K, 50% used [0x00000000a0000000,0x00000000a2240f00,0x00000000a4400000)
+ Metaspace       used 64342K, capacity 67066K, committed 67288K, reserved 1107968K
+  class space    used 8410K, capacity 9101K, committed 9216K, reserved 1048576K
+}
+Event: 179,760 GC heap before
+{Heap before GC invocations=18 (full 3):
+ PSYoungGen      total 360448K, used 358699K [0x00000000e0000000, 0x00000000f7880000, 0x0000000100000000)
+  eden space 341504K, 99% used [0x00000000e0000000,0x00000000f4d46238,0x00000000f4d80000)
+  from space 18944K, 91% used [0x00000000f6280000,0x00000000f7384ad0,0x00000000f7500000)
+  to   space 21504K, 0% used [0x00000000f4d80000,0x00000000f4d80000,0x00000000f6280000)
+ ParOldGen       total 69632K, used 35075K [0x00000000a0000000, 0x00000000a4400000, 0x00000000e0000000)
+  object space 69632K, 50% used [0x00000000a0000000,0x00000000a2240f00,0x00000000a4400000)
+ Metaspace       used 70764K, capacity 74546K, committed 74712K, reserved 1114112K
+  class space    used 9242K, capacity 10197K, committed 10240K, reserved 1048576K
+
+Deoptimization events (10 events):
+Event: 177,740 Thread 0x00007fed5c177800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007fee5db58970 method=java.io.ObjectOutputStream$BlockDataOutputStream.drain()V @ 36
+Event: 177,794 Thread 0x00007fed5c177800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007fee5efd1d98 method=java.io.ObjectOutputStream$BlockDataOutputStream.drain()V @ 36
+Event: 177,795 Thread 0x00007fed5c177800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007fee5ead69c8 method=java.io.ObjectOutputStream$BlockDataOutputStream.drain()V @ 36
+Event: 177,798 Thread 0x00007fed5c177800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fee5f063980 method=java.io.ObjectOutputStream.writeObject0(Ljava/lang/Object;Z)V @ 477
+Event: 178,338 Thread 0x00007fed5c177800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fee5e526768 method=java.io.UnixFileSystem.prefixLength(Ljava/lang/String;)I @ 4
+Event: 178,341 Thread 0x00007fedb401b000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007fee5df40d0c method=java.lang.AbstractStringBuilder.append(Ljava/lang/CharSequence;)Ljava/lang/AbstractStringBuilder; @ 26
+Event: 178,341 Thread 0x00007fedb401b000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007fee5dee4a90 method=java.lang.AbstractStringBuilder.append(Ljava/lang/CharSequence;II)Ljava/lang/AbstractStringBuilder; @ 18
+Event: 179,292 Thread 0x00007fed5c177800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fee5d4b6d7c method=com.sun.org.apache.xerces.internal.dom.NodeImpl.isOwned(Z)V @ 2
+Event: 179,292 Thread 0x00007fed5c177800 Uncommon trap: reason=null_check action=make_not_entrant pc=0x00007fee5e7e9f6c method=com.android.ide.common.res2.NodeUtils.processSingleNodeNamespace(Lorg/w3c/dom/Node;Lorg/w3c/dom/Document;)Z @ 8
+Event: 179,306 Thread 0x00007fed5c177800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fee5d3c7e10 method=com.android.ide.common.res2.NodeUtils.processSingleNodeNamespace(Lorg/w3c/dom/Node;Lorg/w3c/dom/Document;)Z @ 24
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (10 events):
+Event: 177,800 Thread 0x00007fed5c177800 Exception <a 'java/lang/NoSuchMethodError': <clinit>> (0x00000000f417b888) thrown at [/ssd/Android/AOSP-openjdk-git/jdk8u/hotspot/src/share/vm/prims/jni.cpp, line 1613]
+Event: 177,803 Thread 0x00007fed5c177800 Exception <a 'java/lang/NoSuchMethodError': <clinit>> (0x00000000f4198410) thrown at [/ssd/Android/AOSP-openjdk-git/jdk8u/hotspot/src/share/vm/prims/jni.cpp, line 1613]
+Event: 177,803 Thread 0x00007fed5c177800 Exception <a 'java/lang/NoSuchMethodError': <clinit>> (0x00000000f41a0358) thrown at [/ssd/Android/AOSP-openjdk-git/jdk8u/hotspot/src/share/vm/prims/jni.cpp, line 1613]
+Event: 177,803 Thread 0x00007fed5c177800 Exception <a 'java/lang/NoSuchMethodError': <clinit>> (0x00000000f41a3498) thrown at [/ssd/Android/AOSP-openjdk-git/jdk8u/hotspot/src/share/vm/prims/jni.cpp, line 1613]
+Event: 177,804 Thread 0x00007fed5c177800 Exception <a 'java/lang/NoSuchMethodError': <clinit>> (0x00000000f41b7850) thrown at [/ssd/Android/AOSP-openjdk-git/jdk8u/hotspot/src/share/vm/prims/jni.cpp, line 1613]
+Event: 177,806 Thread 0x00007fed5c177800 Exception <a 'java/lang/NoSuchMethodError': <clinit>> (0x00000000f41d13a0) thrown at [/ssd/Android/AOSP-openjdk-git/jdk8u/hotspot/src/share/vm/prims/jni.cpp, line 1613]
+Event: 177,806 Thread 0x00007fed5c177800 Exception <a 'java/lang/NoSuchMethodError': <clinit>> (0x00000000f41d4230) thrown at [/ssd/Android/AOSP-openjdk-git/jdk8u/hotspot/src/share/vm/prims/jni.cpp, line 1613]
+Event: 177,807 Thread 0x00007fed5c177800 Exception <a 'java/lang/NoSuchMethodError': <clinit>> (0x00000000f41e3ad8) thrown at [/ssd/Android/AOSP-openjdk-git/jdk8u/hotspot/src/share/vm/prims/jni.cpp, line 1613]
+Event: 179,198 Thread 0x00007fedf50cf800 Exception <a 'java/io/IOException'> (0x00000000ea143f70) thrown at [/ssd/Android/AOSP-openjdk-git/jdk8u/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 179,292 Thread 0x00007fed5c177800 Implicit null exception at 0x00007fee5e7e9e17 to 0x00007fee5e7e9f5b
+
+Events (10 events):
+Event: 179,604 loading class com/android/ide/common/vectordrawable/VdPath
+Event: 179,604 loading class com/android/ide/common/vectordrawable/VdPath done
+Event: 179,624 loading class java/awt/Composite
+Event: 179,657 loading class java/awt/Composite done
+Event: 179,657 loading class java/awt/image/BufferedImage
+Event: 179,751 loading class java/awt/image/WritableRenderedImage
+Event: 179,751 loading class java/awt/image/WritableRenderedImage done
+Event: 179,751 loading class java/awt/image/BufferedImage done
+Event: 179,752 loading class java/awt/geom/AffineTransform
+Event: 179,760 Executing VM operation: ParallelGCFailedAllocation
+
+
+Dynamic libraries:
+00400000-00401000 r-xp 00000000 08:05 27581373                           /home/vitaly/android-studio/jre/bin/java
+00600000-00601000 r--p 00000000 08:05 27581373                           /home/vitaly/android-studio/jre/bin/java
+00601000-00602000 rw-p 00001000 08:05 27581373                           /home/vitaly/android-studio/jre/bin/java
+014f7000-01518000 rw-p 00000000 00:00 0                                  [heap]
+a0000000-a4400000 rw-p 00000000 00:00 0 
+a4400000-e0000000 ---p 00000000 00:00 0 
+e0000000-f7880000 rw-p 00000000 00:00 0 
+100000000-100a00000 rw-p 00000000 00:00 0 
+100a00000-140000000 ---p 00000000 00:00 0 
+7fed4c000000-7fed4c021000 rw-p 00000000 00:00 0 
+7fed4c021000-7fed50000000 ---p 00000000 00:00 0 
+7fed50000000-7fed50021000 rw-p 00000000 00:00 0 
+7fed50021000-7fed54000000 ---p 00000000 00:00 0 
+7fed54000000-7fed54021000 rw-p 00000000 00:00 0 
+7fed54021000-7fed58000000 ---p 00000000 00:00 0 
+7fed5c000000-7fed5c70e000 rw-p 00000000 00:00 0 
+7fed5c70e000-7fed60000000 ---p 00000000 00:00 0 
+7fed60000000-7fed6003a000 rw-p 00000000 00:00 0 
+7fed6003a000-7fed64000000 ---p 00000000 00:00 0 
+7fed64000000-7fed64021000 rw-p 00000000 00:00 0 
+7fed64021000-7fed68000000 ---p 00000000 00:00 0 
+7fed68000000-7fed68021000 rw-p 00000000 00:00 0 
+7fed68021000-7fed6c000000 ---p 00000000 00:00 0 
+7fed6c000000-7fed6c021000 rw-p 00000000 00:00 0 
+7fed6c021000-7fed70000000 ---p 00000000 00:00 0 
+7fed70000000-7fed70021000 rw-p 00000000 00:00 0 
+7fed70021000-7fed74000000 ---p 00000000 00:00 0 
+7fed74000000-7fed74021000 rw-p 00000000 00:00 0 
+7fed74021000-7fed78000000 ---p 00000000 00:00 0 
+7fed78000000-7fed78021000 rw-p 00000000 00:00 0 
+7fed78021000-7fed7c000000 ---p 00000000 00:00 0 
+7fed7c000000-7fed7c021000 rw-p 00000000 00:00 0 
+7fed7c021000-7fed80000000 ---p 00000000 00:00 0 
+7fed80000000-7fed80021000 rw-p 00000000 00:00 0 
+7fed80021000-7fed84000000 ---p 00000000 00:00 0 
+7fed84000000-7fed84021000 rw-p 00000000 00:00 0 
+7fed84021000-7fed88000000 ---p 00000000 00:00 0 
+7fed88000000-7fed88021000 rw-p 00000000 00:00 0 
+7fed88021000-7fed8c000000 ---p 00000000 00:00 0 
+7fed8c000000-7fed8c021000 rw-p 00000000 00:00 0 
+7fed8c021000-7fed90000000 ---p 00000000 00:00 0 
+7fed91e26000-7fed91f26000 rw-p 00000000 00:00 0 
+7fed91f26000-7fed92026000 ---p 00000000 00:00 0 
+7fed92026000-7fed92226000 rw-p 00000000 00:00 0 
+7fed92226000-7fed9223d000 r-xp 00000000 08:05 12085057                   /lib/x86_64-linux-gnu/libresolv-2.23.so
+7fed9223d000-7fed9243d000 ---p 00017000 08:05 12085057                   /lib/x86_64-linux-gnu/libresolv-2.23.so
+7fed9243d000-7fed9243e000 r--p 00017000 08:05 12085057                   /lib/x86_64-linux-gnu/libresolv-2.23.so
+7fed9243e000-7fed9243f000 rw-p 00018000 08:05 12085057                   /lib/x86_64-linux-gnu/libresolv-2.23.so
+7fed9243f000-7fed92441000 rw-p 00000000 00:00 0 
+7fed92441000-7fed92446000 r-xp 00000000 08:05 12085069                   /lib/x86_64-linux-gnu/libnss_dns-2.23.so
+7fed92446000-7fed92646000 ---p 00005000 08:05 12085069                   /lib/x86_64-linux-gnu/libnss_dns-2.23.so
+7fed92646000-7fed92647000 r--p 00005000 08:05 12085069                   /lib/x86_64-linux-gnu/libnss_dns-2.23.so
+7fed92647000-7fed92648000 rw-p 00006000 08:05 12085069                   /lib/x86_64-linux-gnu/libnss_dns-2.23.so
+7fed92648000-7fed9264a000 r-xp 00000000 08:05 12086804                   /lib/x86_64-linux-gnu/libnss_mdns4_minimal.so.2
+7fed9264a000-7fed92849000 ---p 00002000 08:05 12086804                   /lib/x86_64-linux-gnu/libnss_mdns4_minimal.so.2
+7fed92849000-7fed9284a000 r--p 00001000 08:05 12086804                   /lib/x86_64-linux-gnu/libnss_mdns4_minimal.so.2
+7fed9284a000-7fed9284b000 rw-p 00002000 08:05 12086804                   /lib/x86_64-linux-gnu/libnss_mdns4_minimal.so.2
+7fed9284b000-7fed92881000 r-xp 00000000 08:05 27716649                   /home/vitaly/android-studio/jre/jre/lib/amd64/libsunec.so
+7fed92881000-7fed92a80000 ---p 00036000 08:05 27716649                   /home/vitaly/android-studio/jre/jre/lib/amd64/libsunec.so
+7fed92a80000-7fed92a85000 r--p 00035000 08:05 27716649                   /home/vitaly/android-studio/jre/jre/lib/amd64/libsunec.so
+7fed92a85000-7fed92a87000 rw-p 0003a000 08:05 27716649                   /home/vitaly/android-studio/jre/jre/lib/amd64/libsunec.so
+7fed92a87000-7fed92c98000 rw-p 00000000 00:00 0 
+7fed92c98000-7fed92c9b000 ---p 00000000 00:00 0 
+7fed92c9b000-7fed92d99000 rw-p 00000000 00:00 0 
+7fed92d99000-7fed92d9c000 ---p 00000000 00:00 0 
+7fed92d9c000-7fed92e9a000 rw-p 00000000 00:00 0 
+7fed92f9b000-7fed92f9e000 ---p 00000000 00:00 0 
+7fed92f9e000-7fed9309c000 rw-p 00000000 00:00 0 
+7fed9309c000-7fed9309f000 ---p 00000000 00:00 0 
+7fed9309f000-7fed930d5000 rw-p 00000000 00:00 0 
+7fed930d5000-7fed930d8000 ---p 00000000 00:00 0 
+7fed930d8000-7fed9310e000 rw-p 00000000 00:00 0 
+7fed9320f000-7fed93212000 ---p 00000000 00:00 0 
+7fed93212000-7fed93310000 rw-p 00000000 00:00 0 
+7fed93310000-7fed93313000 ---p 00000000 00:00 0 
+7fed93313000-7fed93349000 rw-p 00000000 00:00 0 
+7fed9334b000-7fed9354b000 rw-p 00000000 00:00 0 
+7fed9354b000-7fed9354e000 ---p 00000000 00:00 0 
+7fed9354e000-7fed9364c000 rw-p 00000000 00:00 0 
+7fed9374d000-7fed93750000 ---p 00000000 00:00 0 
+7fed93750000-7fed9384e000 rw-p 00000000 00:00 0 
+7fed93850000-7fed93a50000 rw-p 00000000 00:00 0 
+7fed93a50000-7fed93a53000 ---p 00000000 00:00 0 
+7fed93a53000-7fed93b51000 rw-p 00000000 00:00 0 
+7fed93b53000-7fed93d53000 rw-p 00000000 00:00 0 
+7fed93d53000-7fed93d56000 ---p 00000000 00:00 0 
+7fed93d56000-7fed93d8c000 rw-p 00000000 00:00 0 
+7fed93d8c000-7fed93d8f000 ---p 00000000 00:00 0 
+7fed93d8f000-7fed93dc5000 rw-p 00000000 00:00 0 
+7fed93dc5000-7fed93dc8000 ---p 00000000 00:00 0 
+7fed93dc8000-7fed93dfe000 rw-p 00000000 00:00 0 
+7fed93dfe000-7fed93e01000 ---p 00000000 00:00 0 
+7fed93e01000-7fed93eff000 rw-p 00000000 00:00 0 
+7fed93eff000-7fed93f02000 ---p 00000000 00:00 0 
+7fed93f02000-7fed94000000 rw-p 00000000 00:00 0 
+7fed94000000-7fed940de000 rw-p 00000000 00:00 0 
+7fed940de000-7fed98000000 ---p 00000000 00:00 0 
+7fed98000000-7fed98021000 rw-p 00000000 00:00 0 
+7fed98021000-7fed9c000000 ---p 00000000 00:00 0 
+7fed9c000000-7fed9c021000 rw-p 00000000 00:00 0 
+7fed9c021000-7feda0000000 ---p 00000000 00:00 0 
+7feda0000000-7feda0021000 rw-p 00000000 00:00 0 
+7feda0021000-7feda4000000 ---p 00000000 00:00 0 
+7feda4000000-7feda4021000 rw-p 00000000 00:00 0 
+7feda4021000-7feda8000000 ---p 00000000 00:00 0 
+7feda8000000-7feda8024000 rw-p 00000000 00:00 0 
+7feda8024000-7fedac000000 ---p 00000000 00:00 0 
+7fedac000000-7fedac021000 rw-p 00000000 00:00 0 
+7fedac021000-7fedb0000000 ---p 00000000 00:00 0 
+7fedb0000000-7fedb0021000 rw-p 00000000 00:00 0 
+7fedb0021000-7fedb4000000 ---p 00000000 00:00 0 
+7fedb4000000-7fedb409d000 rw-p 00000000 00:00 0 
+7fedb409d000-7fedb8000000 ---p 00000000 00:00 0 
+7fedb8000000-7fedb8021000 rw-p 00000000 00:00 0 
+7fedb8021000-7fedbc000000 ---p 00000000 00:00 0 
+7fedbc000000-7fedbc021000 rw-p 00000000 00:00 0 
+7fedbc021000-7fedc0000000 ---p 00000000 00:00 0 
+7fedc0000000-7fedc0021000 rw-p 00000000 00:00 0 
+7fedc0021000-7fedc4000000 ---p 00000000 00:00 0 
+7fedc4000000-7fedc4021000 rw-p 00000000 00:00 0 
+7fedc4021000-7fedc8000000 ---p 00000000 00:00 0 
+7fedc8000000-7fedc803f000 rw-p 00000000 00:00 0 
+7fedc803f000-7fedcc000000 ---p 00000000 00:00 0 
+7fedcc000000-7fedcc021000 rw-p 00000000 00:00 0 
+7fedcc021000-7fedd0000000 ---p 00000000 00:00 0 
+7fedd0000000-7fedd003c000 rw-p 00000000 00:00 0 
+7fedd003c000-7fedd4000000 ---p 00000000 00:00 0 
+7fedd4000000-7fedd4021000 rw-p 00000000 00:00 0 
+7fedd4021000-7fedd8000000 ---p 00000000 00:00 0 
+7fedd8000000-7fedd8033000 rw-p 00000000 00:00 0 
+7fedd8033000-7feddc000000 ---p 00000000 00:00 0 
+7feddc004000-7feddc007000 ---p 00000000 00:00 0 
+7feddc007000-7feddc03d000 rw-p 00000000 00:00 0 
+7feddc13e000-7feddc141000 ---p 00000000 00:00 0 
+7feddc141000-7feddc23f000 rw-p 00000000 00:00 0 
+7feddc2b3000-7feddc2b8000 r--s 0003b000 08:05 27716692                   /home/vitaly/android-studio/jre/jre/lib/ext/sunjce_provider.jar
+7feddc2b8000-7feddc2bc000 r--s 00037000 08:05 27716689                   /home/vitaly/android-studio/jre/jre/lib/ext/sunpkcs11.jar
+7feddc2bc000-7feddc32c000 r--s 00643000 08:05 27847426                   /home/vitaly/.gradle/caches/jars-3/fd607a71f3d781451515f815d21ecd8e/groovy-all-2.4.6.jar
+7feddc32c000-7feddc33a000 r--s 000ca000 08:05 27847424                   /home/vitaly/.gradle/caches/jars-3/e0bd0005080c5c7e72a2b279cbd60369/kotlin-runtime.jar
+7feddc33a000-7feddc340000 r--s 0008b000 08:05 27847422                   /home/vitaly/.gradle/caches/jars-3/12b60d252bcd68e30d8b20cdf4f7de06/gradle-tooling-extension-impl.jar
+7feddc340000-7feddc343000 ---p 00000000 00:00 0 
+7feddc343000-7feddc441000 rw-p 00000000 00:00 0 
+7feddc441000-7feddc444000 ---p 00000000 00:00 0 
+7feddc444000-7feddc542000 rw-p 00000000 00:00 0 
+7feddc542000-7feddc545000 ---p 00000000 00:00 0 
+7feddc545000-7feddc843000 rw-p 00000000 00:00 0 
+7feddc843000-7feddca43000 rw-p 00000000 00:00 0 
+7feddca43000-7feddcc43000 rw-p 00000000 00:00 0 
+7feddcc44000-7feddcc46000 r--s 00008000 08:05 27716685                   /home/vitaly/android-studio/jre/jre/lib/ext/sunec.jar
+7feddcc46000-7feddcc4b000 r--s 00034000 08:05 27847420                   /home/vitaly/.gradle/caches/jars-3/d447f2396a03dbc75b6d52fec5a488d6/gson-2.5.jar
+7feddcc4b000-7feddcc4d000 r--s 0000e000 08:05 27581501                   /home/vitaly/.gradle/caches/jars-3/749fa8fddbb60dbf5a9683c6d3a8f3e9/android-extensions-ide.jar
+7feddcc4d000-7feddcc4e000 r--s 00000000 08:05 27581499                   /home/vitaly/.gradle/caches/jars-3/be363fcec6fce25e79fe7d68a2750e91/gradle-appengine-builder-model-0.1.0.jar
+7feddcc4e000-7feddcc6d000 r--s 0053d000 08:05 27581497                   /home/vitaly/.gradle/caches/jars-3/07dcf2f3f2bda71869cda3f75be96a82/sdk-tools.jar
+7feddcc6d000-7feddcc6e000 r--s 00003000 08:05 27581495                   /home/vitaly/.gradle/caches/jars-3/2405bbfe967ae4d56a908337251d2f0e/kotlin-gradle-tooling.jar
+7feddcc6e000-7feddcc6f000 r--s 00002000 08:05 27581493                   /home/vitaly/.gradle/caches/jars-3/a5464f115a9bc6b52bb26e3cbeda18d3/external-system-rt.jar
+7feddcc6f000-7feddcc71000 r--s 0000c000 08:05 27581491                   /home/vitaly/.gradle/caches/jars-3/4bc057eb82a797154e6f5adb86778648/gradle-tooling-extension-api.jar
+7feddcc71000-7feddcc74000 ---p 00000000 00:00 0 
+7feddcc74000-7feddccaa000 rw-p 00000000 00:00 0 
+7feddccaa000-7feddccad000 ---p 00000000 00:00 0 
+7feddccad000-7feddcdab000 rw-p 00000000 00:00 0 
+7feddcdab000-7feddcec6000 r--s 02008000 08:05 28632949                   /home/vitaly/.gradle/caches/jars-3/9955734f77abc673a38c7cd4c0214af5/android.jar
+7feddcec6000-7feddcecd000 r--s 0002a000 08:05 27581489                   /home/vitaly/.gradle/caches/jars-3/fff47aec37b967e571b648d1fc9c6db6/gradle-messaging-3.5.jar
+7feddcecd000-7feddced2000 r--s 00041000 08:05 27581487                   /home/vitaly/.gradle/caches/jars-3/c0502f5c2cf6dfd52d250e1b7d027d24/commons-lang-2.6.jar
+7feddced2000-7feddcf14000 r--s 00220000 08:05 27581485                   /home/vitaly/.gradle/caches/jars-3/929747bc6b973b44297e9c57df71598d/gradle-core-3.5.jar
+7feddcf14000-7feddcf1d000 r--s 00047000 08:05 27458672                   /home/vitaly/.gradle/caches/jars-3/11d06a5dce89fe5632250b7df00a3d57/gradle-base-services-3.5.jar
+7feddcf1d000-7feddcf45000 r--s 001cf000 08:05 27458670                   /home/vitaly/.gradle/caches/jars-3/566e7e0f530f75a42eba4833ef84d88c/guava-jdk5-17.0.jar
+7feddcf45000-7feddcf53000 r--s 00043000 08:05 27458668                   /home/vitaly/.gradle/caches/jars-3/c0d1da18a547ef3a2ba66d3068ae6e09/gradle-tooling-api-3.5.jar
+7feddcf53000-7feddcf56000 ---p 00000000 00:00 0 
+7feddcf56000-7feddd054000 rw-p 00000000 00:00 0 
+7feddd054000-7feddd057000 ---p 00000000 00:00 0 
+7feddd057000-7feddd155000 rw-p 00000000 00:00 0 
+7feddd155000-7feddd158000 ---p 00000000 00:00 0 
+7feddd158000-7feddd256000 rw-p 00000000 00:00 0 
+7feddd256000-7feddd259000 ---p 00000000 00:00 0 
+7feddd259000-7feddd357000 rw-p 00000000 00:00 0 
+7feddd357000-7feddd35a000 ---p 00000000 00:00 0 
+7feddd35a000-7feddd458000 rw-p 00000000 00:00 0 
+7feddd458000-7feddd45b000 ---p 00000000 00:00 0 
+7feddd45b000-7feddd559000 rw-p 00000000 00:00 0 
+7feddd559000-7feddd55c000 ---p 00000000 00:00 0 
+7feddd55c000-7feddd65a000 rw-p 00000000 00:00 0 
+7feddd65a000-7feddd65d000 ---p 00000000 00:00 0 
+7feddd65d000-7feddd95b000 rw-p 00000000 00:00 0 
+7feddd95b000-7fedddb5b000 rw-p 00000000 00:00 0 
+7fedddb5b000-7fedddd5b000 rw-p 00000000 00:00 0 
+7fedddd5b000-7fedddf5b000 rw-p 00000000 00:00 0 
+7fedddf5b000-7fedddf6d000 r--s 00345000 08:05 27581453                   /home/vitaly/android-studio/jre/jre/lib/resources.jar
+7fedddf6d000-7fedde16d000 rw-p 00000000 00:00 0 
+7fedde16d000-7fedde36d000 rw-p 00000000 00:00 0 
+7fedde36d000-7fedde370000 r--s 00015000 08:05 27581452                   /home/vitaly/android-studio/jre/jre/lib/jce.jar
+7fedde370000-7fedde570000 rw-p 00000000 00:00 0 
+7fedde570000-7fedde573000 ---p 00000000 00:00 0 
+7fedde573000-7fedde671000 rw-p 00000000 00:00 0 
+7fedde671000-7fedde6a0000 r--p 00000000 08:05 2497384                    /usr/share/locale-langpack/ru/LC_MESSAGES/libc.mo
+7fedde6a0000-7fedde8a0000 rw-p 00000000 00:00 0 
+7fedde8a0000-7feddea96000 rw-p 00000000 00:00 0 
+7feddea96000-7feddeaa0000 ---p 00000000 00:00 0 
+7feddeaa0000-7feddeaab000 r--s 00081000 08:05 28629783                   /home/vitaly/.gradle/caches/jars-3/fc6e889a0f45cc9752787eb60f920103/trove4j-20160824.jar
+7feddeaab000-7feddeb2e000 r--s 00758000 08:05 28629781                   /home/vitaly/.gradle/caches/jars-3/b46ab84062ddfd52701cfe0a9718e764/intellij-core-26.0.1.jar
+7feddeb2e000-7feddeb34000 r--s 00033000 08:05 28629779                   /home/vitaly/.gradle/caches/jars-3/f96c897d327ea500d64fe3af2833bd50/commons-codec-1.6.jar
+7feddeb34000-7feddeb36000 r--s 0000d000 08:05 28629777                   /home/vitaly/.gradle/caches/jars-3/ccc849edcf9fccd61ed937bf93ffe896/commons-logging-1.1.1.jar
+7feddeb36000-7feddeb3c000 r--s 00032000 08:05 28629775                   /home/vitaly/.gradle/caches/jars-3/72e344059d1923829968d0d38b0c3c72/httpcore-4.2.5.jar
+7feddeb3c000-7feddeb3d000 r--s 00004000 08:05 28629773                   /home/vitaly/.gradle/caches/jars-3/3a4299d1ce3e273e7c03a9ccf5a1e333/annotations-12.0.jar
+7feddeb3d000-7feddeb3e000 r--s 00000000 08:05 28629771                   /home/vitaly/.gradle/caches/jars-3/0e2fbc3b8c56d2975eca90c524790c13/animal-sniffer-annotations-1.14.jar
+7feddeb3e000-7feddeb40000 r--s 00001000 08:05 28629769                   /home/vitaly/.gradle/caches/jars-3/ad41f8f3ac67c0323ce9eb1c20c8dc3f/j2objc-annotations-1.1.jar
+7feddeb40000-7feddeb41000 r--s 00002000 08:05 28629767                   /home/vitaly/.gradle/caches/jars-3/9edb0f46b907c34c4718edabde6c791c/error_prone_annotations-2.0.18.jar
+7feddeb41000-7feddeb44000 r--s 00006000 08:05 28629765                   /home/vitaly/.gradle/caches/jars-3/b58a9bc3bbba42132e4abc0bacae8da1/jsr305-1.3.9.jar
+7feddeb44000-7feddeb45000 r--s 0000a000 08:05 28629763                   /home/vitaly/.gradle/caches/jars-3/5b8b36ed61fe92731031cca3c9b3a0b3/kxml2-2.3.0.jar
+7feddeb45000-7feddeb47000 r--s 00005000 08:05 28629761                   /home/vitaly/.gradle/caches/jars-3/f10e1e1978816198f2eb1189c974b440/httpmime-4.1.jar
+7feddeb47000-7feddeb51000 r--s 00061000 08:05 28629759                   /home/vitaly/.gradle/caches/jars-3/bc4b2527f35dc983f759e8f85f3f8d52/httpclient-4.2.6.jar
+7feddeb51000-7feddeb5a000 r--s 00064000 08:05 28629757                   /home/vitaly/.gradle/caches/jars-3/fc37c717528c2a0d27f3e3621835f781/commons-compress-1.12.jar
+7feddeb5a000-7feddeb5f000 r--s 0002e000 08:05 28629755                   /home/vitaly/.gradle/caches/jars-3/c5bcda7f6f4809e9c92270f99e51f154/gson-2.3.jar
+7feddeb5f000-7feddeb6f000 r--s 000d6000 08:05 28629753                   /home/vitaly/.gradle/caches/jars-3/dbdb8caed2514263a34702cc763c6785/proguard-base-5.3.3.jar
+7feddeb6f000-7feddeb71000 r--s 00003000 08:05 28629751                   /home/vitaly/.gradle/caches/jars-3/01ab8600ebbfdcaf9b89b45c2b992e82/annotations-13.0.jar
+7feddeb71000-7feddeb72000 r--s 00001000 08:05 28629749                   /home/vitaly/.gradle/caches/jars-3/dccac9b7f67766e57200b1770178f61c/annotations-26.0.1.jar
+7feddeb72000-7feddeb75000 r--s 00033000 08:05 28629747                   /home/vitaly/.gradle/caches/jars-3/0ce03714647bf7bd3c78634c20ddbf38/juniversalchardet-1.0.3.jar
+7feddeb75000-7feddeb79000 r--s 0002a000 08:05 28629745                   /home/vitaly/.gradle/caches/jars-3/9849af6d4b0409ba64061601342f385d/commons-io-2.4.jar
+7feddeb79000-7feddeb90000 r--s 00154000 08:05 28629743                   /home/vitaly/.gradle/caches/jars-3/57adf9abd30c921d4ea1dfdcfe7b9efd/antlr4-4.5.3.jar
+7feddeb90000-7feddeb91000 r--s 00003000 08:05 28629741                   /home/vitaly/.gradle/caches/jars-3/54a15dd332fd4c2e246ad396835dc0d2/baseLibrary-3.0.1.jar
+7feddeb91000-7feddebc1000 r--s 00245000 08:05 28629739                   /home/vitaly/.gradle/caches/jars-3/8e27cdebb49ba2f804f9403d90aaaac5/guava-22.0.jar
+7feddebc1000-7feddebc9000 r--s 000a8000 08:05 28629737                   /home/vitaly/.gradle/caches/jars-3/6cc57ce9ec0d90186f781694264d61bc/lombok-ast-0.2.3.jar
+7feddebc9000-7feddebcd000 r--s 0002f000 08:05 28629735                   /home/vitaly/.gradle/caches/jars-3/505fcc8c47da308b2f1262f0ff3c65f1/jimfs-1.1.jar
+7feddebcd000-7feddebe0000 r--s 00241000 08:05 28629733                   /home/vitaly/.gradle/caches/jars-3/d8dc71eb6d91c966c45f7b594129e14a/ecj-4.6.1.jar
+7feddebe0000-7feddebe1000 r--s 00003000 08:05 28629731                   /home/vitaly/.gradle/caches/jars-3/fdb8f5ebd6a086c4818336712b830716/json-simple-1.1.jar
+7feddebe1000-7fedded06000 r--s 00f5d000 08:05 28629729                   /home/vitaly/.gradle/caches/jars-3/dfd566a90e18a0aa75879c33e0731ab8/fastutil-7.2.0.jar
+7fedded06000-7fedded51000 r--s 002ff000 08:05 28629727                   /home/vitaly/.gradle/caches/jars-3/d3d44e9a7fcb4a86fb40775c385dd3d0/bcprov-jdk15on-1.56.jar
+7fedded51000-7fedded62000 r--s 00097000 08:05 28629725                   /home/vitaly/.gradle/caches/jars-3/59ebb77d99c5ca0e24bb23272e0329dd/bcpkix-jdk15on-1.56.jar
+7fedded62000-7fedded64000 r--s 00002000 08:05 28629723                   /home/vitaly/.gradle/caches/jars-3/f268e5e8fc83bb846ac355d6a16b1f30/javawriter-2.5.0.jar
+7fedded64000-7fedded69000 r--s 0003b000 08:05 28629721                   /home/vitaly/.gradle/caches/jars-3/91bf67441f6ac57ccbb374f99f9ed0fc/apksig-3.0.1.jar
+7fedded69000-7fedded6c000 r--s 00024000 08:05 28629719                   /home/vitaly/.gradle/caches/jars-3/04183dcd1bde85515b23d1bbd46ea9bc/common-26.0.1.jar
+7fedded6c000-7fedded6e000 r--s 00006000 08:05 28629717                   /home/vitaly/.gradle/caches/jars-3/a0ea702af2bdb16dfa1a50969b155dea/dvlib-26.0.1.jar
+7fedded6e000-7fedded71000 r--s 00014000 08:05 28629715                   /home/vitaly/.gradle/caches/jars-3/6abb718b4b844aa0386163f0c2f6eb72/layoutlib-api-26.0.1.jar
+7fedded71000-7fedded76000 r--s 0004d000 08:05 28629713                   /home/vitaly/.gradle/caches/jars-3/65a80584522712b8832b7c1c03186c4b/ddmlib-26.0.1.jar
+7fedded76000-7fedded77000 r--s 00003000 08:05 28629711                   /home/vitaly/.gradle/caches/jars-3/af01854c900e4906a368ef59064a245d/builder-test-api-3.0.1.jar
+7fedded77000-7fedded7a000 r--s 00007000 08:05 28629709                   /home/vitaly/.gradle/caches/jars-3/124ec36ab4edce0919b54d1123daa364/builder-model-3.0.1.jar
+7fedded7a000-7fedded89000 r--s 00130000 08:05 28629707                   /home/vitaly/.gradle/caches/jars-3/72ba1443c6adcea1f6ba21e12f0bb0fc/protobuf-java-3.0.0.jar
+7fedded89000-7fedded9c000 r--s 001a8000 08:05 28629705                   /home/vitaly/.gradle/caches/jars-3/a1cbdfb97e256e71fcbd29dc4584a785/protos-26.0.1.jar
+7fedded9c000-7fedded9d000 r--s 00005000 08:05 28629703                   /home/vitaly/.gradle/caches/jars-3/ca5180624b528b15325a5d002dbfbb6d/shared-26.0.1.jar
+7fedded9d000-7fedded9f000 r--s 00004000 08:05 28629701                   /home/vitaly/.gradle/caches/jars-3/07f12c2b6f66ca8d4d6bd02e9c9b060a/tracker-26.0.1.jar
+7fedded9f000-7feddeda1000 r--s 00002000 08:05 28629699                   /home/vitaly/.gradle/caches/jars-3/e91624d2ed1c3b55eec9fd768ed13c1d/proguard-gradle-5.3.3.jar
+7feddeda1000-7feddeda3000 r--s 0000f000 08:05 28629697                   /home/vitaly/.gradle/caches/jars-3/96760c32d36a5d7066e3ccf088bfd362/jopt-simple-4.9.jar
+7feddeda3000-7feddeda7000 r--s 0001e000 08:05 28629695                   /home/vitaly/.gradle/caches/jars-3/0d3e95aba631209a078aeec58a76633d/org.jacoco.core-0.7.4.201502262128.jar
+7feddeda7000-7feddedaa000 r--s 00020000 08:05 28629693                   /home/vitaly/.gradle/caches/jars-3/c72fc284d34f39eab57a4e3ba83405e9/org.jacoco.report-0.7.4.201502262128.jar
+7feddedaa000-7feddedac000 r--s 0000c000 08:05 28629691                   /home/vitaly/.gradle/caches/jars-3/9b0a36633c92c6e87e62c81734593183/asm-5.1.jar
+7feddedac000-7feddedbb000 r--s 000c8000 08:05 28371534                   /home/vitaly/.gradle/caches/jars-3/af931fae44e009148423077fa09abbd1/kotlin-stdlib-1.1.3-2.jar
+7feddedbb000-7feddeded000 r--s 0021b000 08:05 28371532                   /home/vitaly/.gradle/caches/jars-3/24b2127528a18b338af82ff7ea236d45/kotlin-reflect-1.1.3-2.jar
+7feddeded000-7feddedf8000 r--s 0009b000 08:05 28371528                   /home/vitaly/.gradle/caches/jars-3/af771564c510a1c104220a8be892ab2d/sdklib-26.0.1.jar
+7feddedf8000-7feddeff8000 rw-p 00000000 00:00 0 
+7feddeff8000-7feddeffb000 ---p 00000000 00:00 0 
+7feddeffb000-7feddf0f9000 rw-p 00000000 00:00 0 
+7feddf0f9000-7feddf0fc000 ---p 00000000 00:00 0 
+7feddf0fc000-7feddf1fa000 rw-p 00000000 00:00 0 
+7feddf1fa000-7feddf1fd000 ---p 00000000 00:00 0 
+7feddf1fd000-7feddf2fb000 rw-p 00000000 00:00 0 
+7feddf2fb000-7feddf2fe000 ---p 00000000 00:00 0 
+7feddf2fe000-7feddf3fc000 rw-p 00000000 00:00 0 
+7feddf3fc000-7feddf3ff000 ---p 00000000 00:00 0 
+7feddf3ff000-7feddf4fd000 rw-p 00000000 00:00 0 
+7feddf4fd000-7feddf500000 ---p 00000000 00:00 0 
+7feddf500000-7feddf5fe000 rw-p 00000000 00:00 0 
+7feddf5fe000-7feddf601000 ---p 00000000 00:00 0 
+7feddf601000-7feddf6ff000 rw-p 00000000 00:00 0 
+7feddf6ff000-7feddf702000 ---p 00000000 00:00 0 
+7feddf702000-7feddfa00000 rw-p 00000000 00:00 0 
+7feddfa00000-7feddfc00000 rw-p 00000000 00:00 0 
+7feddfc00000-7feddfe00000 rw-p 00000000 00:00 0 
+7feddfe00000-7fede0000000 rw-p 00000000 00:00 0 
+7fede0000000-7fede0023000 rw-p 00000000 00:00 0 
+7fede0023000-7fede4000000 ---p 00000000 00:00 0 
+7fede4000000-7fede4021000 rw-p 00000000 00:00 0 
+7fede4021000-7fede8000000 ---p 00000000 00:00 0 
+7fede8000000-7fede8280000 rw-p 00000000 00:00 0 
+7fede8280000-7fedec000000 ---p 00000000 00:00 0 
+7fedec000000-7fedec021000 rw-p 00000000 00:00 0 
+7fedec021000-7fedf0000000 ---p 00000000 00:00 0 
+7fedf0000000-7fedf0021000 rw-p 00000000 00:00 0 
+7fedf0021000-7fedf4000000 ---p 00000000 00:00 0 
+7fedf4000000-7fedf590f000 rw-p 00000000 00:00 0 
+7fedf590f000-7fedf8000000 ---p 00000000 00:00 0 
+7fedf8000000-7fedf8060000 rw-p 00000000 00:00 0 
+7fedf8060000-7fedfc000000 ---p 00000000 00:00 0 
+7fedfc000000-7fedfc078000 rw-p 00000000 00:00 0 
+7fedfc078000-7fee00000000 ---p 00000000 00:00 0 
+7fee00000000-7fee00078000 rw-p 00000000 00:00 0 
+7fee00078000-7fee04000000 ---p 00000000 00:00 0 
+7fee04000000-7fee04021000 rw-p 00000000 00:00 0 
+7fee04021000-7fee08000000 ---p 00000000 00:00 0 
+7fee08000000-7fee08021000 rw-p 00000000 00:00 0 
+7fee08021000-7fee0c000000 ---p 00000000 00:00 0 
+7fee0c000000-7fee0c021000 rw-p 00000000 00:00 0 
+7fee0c021000-7fee10000000 ---p 00000000 00:00 0 
+7fee10000000-7fee11b5c000 rw-p 00000000 00:00 0 
+7fee11b5c000-7fee14000000 ---p 00000000 00:00 0 
+7fee14000000-7fee15021000 rw-p 00000000 00:00 0 
+7fee15021000-7fee18000000 ---p 00000000 00:00 0 
+7fee18000000-7fee19895000 rw-p 00000000 00:00 0 
+7fee19895000-7fee1c000000 ---p 00000000 00:00 0 
+7fee1c000000-7fee1e45f000 rw-p 00000000 00:00 0 
+7fee1e45f000-7fee20000000 ---p 00000000 00:00 0 
+7fee20000000-7fee20021000 rw-p 00000000 00:00 0 
+7fee20021000-7fee24000000 ---p 00000000 00:00 0 
+7fee24000000-7fee24021000 rw-p 00000000 00:00 0 
+7fee24021000-7fee28000000 ---p 00000000 00:00 0 
+7fee28000000-7fee2827f000 rw-p 00000000 00:00 0 
+7fee2827f000-7fee2c000000 ---p 00000000 00:00 0 
+7fee2c000000-7fee2c021000 rw-p 00000000 00:00 0 
+7fee2c021000-7fee30000000 ---p 00000000 00:00 0 
+7fee30000000-7fee30021000 rw-p 00000000 00:00 0 
+7fee30021000-7fee34000000 ---p 00000000 00:00 0 
+7fee34000000-7fee34002000 r--s 00006000 08:05 28629689                   /home/vitaly/.gradle/caches/jars-3/50c8a7da333c41693b2b7ce95b6d9d89/asm-tree-5.1.jar
+7fee34002000-7fee34004000 r--s 0000a000 08:05 28629685                   /home/vitaly/.gradle/caches/jars-3/d37aa405961c464c627b1efe5def81b8/asm-commons-5.1.jar
+7fee34004000-7fee34007000 ---p 00000000 00:00 0 
+7fee34007000-7fee34305000 rw-p 00000000 00:00 0 
+7fee34305000-7fee3430b000 r--s 00030000 08:05 28371530                   /home/vitaly/.gradle/caches/jars-3/90ec49f8b88710e2876aefe447609abb/repository-26.0.1.jar
+7fee3430b000-7fee3431a000 r--s 000da000 08:05 28371526                   /home/vitaly/.gradle/caches/jars-3/50767da85151ce151711c301f4a0623c/sdk-common-26.0.1.jar
+7fee3431a000-7fee3431e000 r--s 00023000 08:05 28371524                   /home/vitaly/.gradle/caches/jars-3/186e268c3a12c0a405d658dabf9d64d2/manifest-merger-26.0.1.jar
+7fee3431e000-7fee3432d000 r--s 000cb000 08:05 28242428                   /home/vitaly/.gradle/caches/jars-3/e5c09abb4b0acf0785ecd8a8015ab959/uast-26.0.1.jar
+7fee3432d000-7fee3435d000 r--s 01983000 08:05 28242420                   /home/vitaly/.gradle/caches/jars-3/add7f1627b730db059119a8274a10c21/builder-3.0.1.jar
+7fee3435d000-7fee34380000 r--s 0020b000 08:05 28242418                   /home/vitaly/.gradle/caches/jars-3/4adae2b762c8552c6e3aa2ded1493e4b/gradle-core-3.0.1.jar
+7fee34380000-7fee34580000 rw-p 00000000 00:00 0 
+7fee34580000-7fee345f9000 r--s 010fd000 08:05 27581424                   /home/vitaly/android-studio/jre/lib/tools.jar
+7fee345f9000-7fee347f9000 rw-p 00000000 00:00 0 
+7fee347f9000-7fee347fc000 ---p 00000000 00:00 0 
+7fee347fc000-7fee348fa000 rw-p 00000000 00:00 0 
+7fee348fa000-7fee348fd000 ---p 00000000 00:00 0 
+7fee348fd000-7fee349fb000 rw-p 00000000 00:00 0 
+7fee349fb000-7fee349fe000 ---p 00000000 00:00 0 
+7fee349fe000-7fee34cfc000 rw-p 00000000 00:00 0 
+7fee34cfc000-7fee34cff000 ---p 00000000 00:00 0 
+7fee34cff000-7fee34dfd000 rw-p 00000000 00:00 0 
+7fee34dfd000-7fee34e00000 ---p 00000000 00:00 0 
+7fee34e00000-7fee34efe000 rw-p 00000000 00:00 0 
+7fee34efe000-7fee34f01000 ---p 00000000 00:00 0 
+7fee34f01000-7fee38000000 rw-p 00000000 00:00 0 
+7fee38000000-7fee38023000 rw-p 00000000 00:00 0 
+7fee38023000-7fee3c000000 ---p 00000000 00:00 0 
+7fee3c000000-7fee3c001000 r--s 0000a000 08:05 28629687                   /home/vitaly/.gradle/caches/jars-3/c4f1f1d5a624f981d35a78d181e2c418/asm-util-5.1.jar
+7fee3c001000-7fee3c002000 r--s 00004000 08:05 28629683                   /home/vitaly/.gradle/caches/jars-3/2b2689d10a4425b1cb2d0654db2ea088/asm-analysis-5.1.jar
+7fee3c002000-7fee3c003000 r--s 00000000 08:05 28499956                   /home/vitaly/.gradle/caches/jars-3/5206138fb8a6b2ffbd31e140916c2100/transform-api-2.0.0-deprecated-use-gradle-api.jar
+7fee3c003000-7fee3c007000 r--s 0002e000 08:05 28242432                   /home/vitaly/.gradle/caches/jars-3/c519ce7b2f3637e909703f541c08c445/compilerCommon-3.0.1.jar
+7fee3c007000-7fee3c009000 r--s 00003000 08:05 28242430                   /home/vitaly/.gradle/caches/jars-3/34cfdbf6cad3f54cc2f45521bf0374e7/gradle-api-3.0.1.jar
+7fee3c009000-7fee3c010000 r--s 0007f000 08:05 28242426                   /home/vitaly/.gradle/caches/jars-3/b1f5a73634581e955e7f89376aea2d48/lint-api-26.0.1.jar
+7fee3c010000-7fee3c019000 r--s 000ff000 08:05 28242424                   /home/vitaly/.gradle/caches/jars-3/75e696a5531ca85e1fe447df83f74bd2/lint-checks-26.0.1.jar
+7fee3c019000-7fee3c01c000 r--s 00039000 08:05 28242422                   /home/vitaly/.gradle/caches/jars-3/7fa6c4fcdd1d81db4cc9c7439ce29486/lint-26.0.1.jar
+7fee3c01c000-7fee3c01e000 r--s 0000f000 08:05 28242416                   /home/vitaly/.gradle/caches/jars-3/afd86a0d8507fd7f2e97461eaf9e4416/gradle-3.0.1.jar
+7fee3c01e000-7fee3c021000 ---p 00000000 00:00 0 
+7fee3c021000-7fee3c11f000 rw-p 00000000 00:00 0 
+7fee3c11f000-7fee3c122000 ---p 00000000 00:00 0 
+7fee3c122000-7fee3c220000 rw-p 00000000 00:00 0 
+7fee3c220000-7fee3c223000 ---p 00000000 00:00 0 
+7fee3c223000-7fee3c321000 rw-p 00000000 00:00 0 
+7fee3c321000-7fee3c324000 ---p 00000000 00:00 0 
+7fee3c324000-7fee3c422000 rw-p 00000000 00:00 0 
+7fee3c422000-7fee3c429000 r--s 00000000 08:05 1184307                    /usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache
+7fee3c429000-7fee3c42c000 ---p 00000000 00:00 0 
+7fee3c42c000-7fee3c52a000 rw-p 00000000 00:00 0 
+7fee3c52a000-7fee3c52f000 r--s 0009a000 08:05 27581474                   /home/vitaly/android-studio/jre/jre/lib/jsse.jar
+7fee3c52f000-7fee3c72f000 rw-p 00000000 00:00 0 
+7fee3c72f000-7fee3c738000 r-xp 00000000 08:05 27716669                   /home/vitaly/android-studio/jre/jre/lib/amd64/libmanagement.so
+7fee3c738000-7fee3c937000 ---p 00009000 08:05 27716669                   /home/vitaly/android-studio/jre/jre/lib/amd64/libmanagement.so
+7fee3c937000-7fee3c938000 r--p 00008000 08:05 27716669                   /home/vitaly/android-studio/jre/jre/lib/amd64/libmanagement.so
+7fee3c938000-7fee3c939000 rw-p 00009000 08:05 27716669                   /home/vitaly/android-studio/jre/jre/lib/amd64/libmanagement.so
+7fee3c939000-7fee3c93b000 r--s 00007000 08:05 28235735                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-tooling-api-builders-4.1.jar
+7fee3c93b000-7fee3c93e000 r--s 00009000 08:05 28235745                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-testing-native-4.1.jar
+7fee3c93e000-7fee3c940000 r--s 00009000 08:05 28235818                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/hamcrest-core-1.3.jar
+7fee3c940000-7fee3c945000 r--s 00040000 08:05 28235813                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/bsh-2.0b4.jar
+7fee3c945000-7fee3c947000 r--s 00006000 08:05 28235814                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/jcommander-1.12.jar
+7fee3c947000-7fee3c94d000 r--s 00033000 08:05 28235815                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/snakeyaml-1.6.jar
+7fee3c94d000-7fee3c956000 r--s 00089000 08:05 28235773                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/testng-6.3.1.jar
+7fee3c956000-7fee3c95e000 r--s 00045000 08:05 28235774                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/junit-4.12.jar
+7fee3c95e000-7fee3c964000 r--s 0002e000 08:05 28235741                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-testing-jvm-4.1.jar
+7fee3c964000-7fee3c968000 r--s 00017000 08:05 28235749                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-testing-base-4.1.jar
+7fee3c968000-7fee3c96f000 r--s 00038000 08:05 28235769                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/bcpg-jdk15on-1.51.jar
+7fee3c96f000-7fee3c971000 r--s 0000c000 08:05 28235720                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-signing-4.1.jar
+7fee3c971000-7fee3c973000 r--s 00007000 08:05 28235726                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-scala-4.1.jar
+7fee3c973000-7fee3c974000 r--s 00004000 08:05 28235757                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-resources-sftp-4.1.jar
+7fee3c974000-7fee3c984000 r--s 00088000 08:05 28235786                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/joda-time-2.8.2.jar
+7fee3c984000-7fee3c995000 r--s 0010d000 08:05 28235785                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/jackson-databind-2.6.6.jar
+7fee3c995000-7fee3c998000 r--s 00009000 08:05 28235784                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/jackson-annotations-2.6.6.jar
+7fee3c998000-7fee3c99c000 r--s 0003c000 08:05 28235783                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/jackson-core-2.6.6.jar
+7fee3c99c000-7fee3c9aa000 r--s 00087000 08:05 28235782                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/aws-java-sdk-core-1.11.6.jar
+7fee3c9aa000-7fee3c9b1000 r--s 00057000 08:05 28235781                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/aws-java-sdk-kms-1.11.6.jar
+7fee3c9b1000-7fee3c9be000 r--s 0008e000 08:05 28235780                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/aws-java-sdk-s3-1.11.6.jar
+7fee3c9be000-7fee3c9c0000 r--s 00004000 08:05 28235754                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-resources-s3-4.1.jar
+7fee3c9c0000-7fee3c9c2000 r--s 00010000 08:05 28235750                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-reporting-4.1.jar
+7fee3c9c2000-7fee3c9c4000 r--s 00002000 08:05 28235751                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-publish-4.1.jar
+7fee3c9c4000-7fee3c9c6000 r--s 00009000 08:05 28235762                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/commons-cli-1.2.jar
+7fee3c9c6000-7fee3c9cc000 r--s 00036000 08:05 28235734                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-plugins-4.1.jar
+7fee3c9cc000-7fee3c9ce000 r--s 00009000 08:05 28235721                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-plugin-development-4.1.jar
+7fee3c9ce000-7fee3c9d4000 r--s 0002b000 08:05 28235729                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-platform-play-4.1.jar
+7fee3c9d4000-7fee3c9e3000 r--s 0005b000 08:05 28235747                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-platform-native-4.1.jar
+7fee3c9e3000-7fee3c9e7000 r--s 0001b000 08:05 28235744                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-platform-jvm-4.1.jar
+7fee3c9e7000-7fee3c9ef000 r--s 00027000 08:05 28235752                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-platform-base-4.1.jar
+7fee3c9ef000-7fee3ca17000 r--s 0021c000 08:05 28235763                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/biz.aQute.bndlib-3.2.0.jar
+7fee3ca17000-7fee3ca18000 r--s 00004000 08:05 28235719                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-osgi-4.1.jar
+7fee3ca18000-7fee3ca1b000 r--s 0000c000 08:05 28235766                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/pmaven-groovy-0.8-20100325.jar
+7fee3ca1b000-7fee3ca1c000 r--s 00004000 08:05 28235765                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/pmaven-common-0.8-20100325.jar
+7fee3ca1c000-7fee3ca22000 r--s 00023000 08:05 28235722                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-maven-4.1.jar
+7fee3ca22000-7fee3ca25000 r--s 0000b000 08:05 28235740                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-language-scala-4.1.jar
+7fee3ca25000-7fee3ca2c000 r--s 00020000 08:05 28235746                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-language-native-4.1.jar
+7fee3ca2c000-7fee3ca2e000 r--s 00005000 08:05 28235743                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-language-jvm-4.1.jar
+7fee3ca2e000-7fee3ca35000 r--s 0002f000 08:05 28235742                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-language-java-4.1.jar
+7fee3ca35000-7fee3ca38000 r--s 0000a000 08:05 28235739                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-language-groovy-4.1.jar
+7fee3ca38000-7fee3ca3f000 r--s 00035000 08:05 28235772                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/simple-4.1.21.jar
+7fee3ca3f000-7fee3ca4b000 r--s 00100000 08:05 28235770                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/rhino-1.7R3.jar
+7fee3ca4b000-7fee3ca4f000 r--s 00012000 08:05 28235730                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-javascript-4.1.jar
+7fee3ca4f000-7fee3ca52000 r--s 00011000 08:05 28235732                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-jacoco-4.1.jar
+7fee3ca52000-7fee3ca55000 r--s 0000e000 08:05 28235731                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-ivy-4.1.jar
+7fee3ca55000-7fee3ca56000 r--s 00002000 08:05 28235723                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-ide-play-4.1.jar
+7fee3ca56000-7fee3ca59000 r--s 00013000 08:05 28235724                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-ide-native-4.1.jar
+7fee3ca59000-7fee3ca63000 r--s 00054000 08:05 28235725                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-ide-4.1.jar
+7fee3ca63000-7fee3ca65000 r--s 00007000 08:05 28235728                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-ear-4.1.jar
+7fee3ca65000-7fee3ca67000 r--s 00005000 08:05 28235760                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/jatl-0.2.2.jar
+7fee3ca67000-7fee3ca6e000 r--s 00038000 08:05 28235748                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-diagnostics-4.1.jar
+7fee3ca6e000-7fee3ca70000 r--s 0000b000 08:05 28235737                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-composite-builds-4.1.jar
+7fee3ca70000-7fee3ca75000 r--s 00025000 08:05 28235717                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-code-quality-4.1.jar
+7fee3ca75000-7fee3ca7a000 r--s 00022000 08:05 28235733                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-build-init-4.1.jar
+7fee3ca7a000-7fee3ca80000 r--s 0008e000 08:05 28235727                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-build-comparison-4.1.jar
+7fee3ca80000-7fee3ca81000 r--s 00002000 08:05 28235755                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-build-cache-http-4.1.jar
+7fee3ca81000-7fee3ca83000 r--s 00008000 08:05 28235718                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-antlr-4.1.jar
+7fee3ca83000-7fee3ca85000 r--s 00004000 08:05 28235738                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-announce-4.1.jar
+7fee3ca85000-7fee3ca87000 r--s 00008000 08:05 28235658                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-kotlin-dsl-tooling-builders-0.10.3.jar
+7fee3ca87000-7fee3ca8a000 r--s 0001c000 08:05 28235776                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/nekohtml-1.9.14.jar
+7fee3ca8a000-7fee3ca92000 r--s 00028000 08:05 28235817                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/xml-apis-1.3.04.jar
+7fee3ca92000-7fee3caaa000 r--s 00115000 08:05 28235777                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/xercesImpl-2.9.1.jar
+7fee3caaa000-7fee3cab0000 r--s 0005b000 08:05 28235775                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/jcifs-1.3.17.jar
+7fee3cab0000-7fee3cab7000 r--s 00049000 08:05 28235816                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/httpcore-4.4.4.jar
+7fee3cab7000-7fee3cabd000 r--s 00033000 08:05 28235768                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/commons-codec-1.6.jar
+7fee3cabd000-7fee3caca000 r--s 000a4000 08:05 28235761                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/httpclient-4.4.1.jar
+7fee3caca000-7fee3cacc000 r--s 0000b000 08:05 28235756                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-resources-http-4.1.jar
+7fee3cacc000-7fee3cad0000 r--s 00017000 08:05 28235753                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-plugin-use-4.1.jar
+7fee3cad0000-7fee3cad1000 r--s 00000000 08:05 28235664                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-runtime-api-info-4.1.jar
+7fee3cad1000-7fee3cad2000 r--s 00000000 08:05 28235667                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-installation-beacon-4.1.jar
+7fee3cad2000-7fee3cb12000 r--s 00277000 08:05 28235788                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/bcprov-jdk15on-1.51.jar
+7fee3cb12000-7fee3cb16000 r--s 0001d000 08:05 28235787                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/xbean-reflect-3.4.jar
+7fee3cb16000-7fee3cb18000 r--s 0000a000 08:05 28235789                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/maven-settings-3.0.4.jar
+7fee3cb18000-7fee3cb1b000 r--s 00008000 08:05 28235790                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/maven-settings-builder-3.0.4.jar
+7fee3cb1b000-7fee3cb1f000 r--s 00033000 08:05 28235791                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/plexus-utils-2.0.6.jar
+7fee3cb1f000-7fee3cb21000 r--s 0000d000 08:05 28235792                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/plexus-interpolation-1.14.jar
+7fee3cb21000-7fee3cb23000 r--s 00000000 08:05 28235767                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/plexus-component-annotations-1.5.5.jar
+7fee3cb23000-7fee3cb2a000 r--s 0002e000 08:05 28235793                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/plexus-container-default-1.5.5.jar
+7fee3cb2a000-7fee3cb2c000 r--s 0000a000 08:05 28235794                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/plexus-classworlds-2.4.jar
+7fee3cb2c000-7fee3cb2e000 r--s 00002000 08:05 28235795                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/plexus-cipher-1.7.jar
+7fee3cb2e000-7fee3cb2f000 r--s 00006000 08:05 28235796                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/plexus-sec-dispatcher-1.3.jar
+7fee3cb2f000-7fee3cb35000 r--s 0003f000 08:05 28235797                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/maven-compat-3.0.4.jar
+7fee3cb35000-7fee3cb39000 r--s 00021000 08:05 28235798                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/maven-model-builder-3.0.4.jar
+7fee3cb39000-7fee3cb3b000 r--s 00026000 08:05 28235799                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/maven-model-3.0.4.jar
+7fee3cb3b000-7fee3cb3d000 r--s 0000b000 08:05 28235800                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/maven-artifact-3.0.4.jar
+7fee3cb3d000-7fee3cb3f000 r--s 00006000 08:05 28235801                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/maven-repository-metadata-3.0.4.jar
+7fee3cb3f000-7fee3cb41000 r--s 0000b000 08:05 28235802                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/maven-plugin-api-3.0.4.jar
+7fee3cb41000-7fee3cb43000 r--s 0000c000 08:05 28235803                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/maven-aether-provider-3.0.4.jar
+7fee3cb43000-7fee3cb44000 r--s 00002000 08:05 28235804                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/wagon-file-2.4.jar
+7fee3cb44000-7fee3cb45000 r--s 00002000 08:05 28235805                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/wagon-http-2.4.jar
+7fee3cb45000-7fee3cb47000 r--s 0000b000 08:05 28235806                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/wagon-provider-api-2.4.jar
+7fee3cb47000-7fee3cb48000 r--s 00007000 08:05 28235807                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/wagon-http-shared4-2.4.jar
+7fee3cb48000-7fee3cb4b000 r--s 00013000 08:05 28235808                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/aether-api-1.13.1.jar
+7fee3cb4b000-7fee3cb4e000 r--s 0001d000 08:05 28235809                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/aether-impl-1.13.1.jar
+7fee3cb4e000-7fee3cb52000 r--s 0001c000 08:05 28235811                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/aether-util-1.13.1.jar
+7fee3cb52000-7fee3cb5e000 r--s 0007d000 08:05 28235764                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/maven-core-3.0.4.jar
+7fee3cb5e000-7fee3cb82000 r--s 0011a000 08:05 28235759                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-dependency-management-4.1.jar
+7fee3cb82000-7fee3cb98000 r-xp 00000000 08:05 12086622                   /lib/x86_64-linux-gnu/libgcc_s.so.1
+7fee3cb98000-7fee3cd97000 ---p 00016000 08:05 12086622                   /lib/x86_64-linux-gnu/libgcc_s.so.1
+7fee3cd97000-7fee3cd98000 rw-p 00015000 08:05 12086622                   /lib/x86_64-linux-gnu/libgcc_s.so.1
+7fee3cd98000-7fee3cf0a000 r-xp 00000000 08:05 789196                     /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21
+7fee3cf0a000-7fee3d10a000 ---p 00172000 08:05 789196                     /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21
+7fee3d10a000-7fee3d114000 r--p 00172000 08:05 789196                     /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21
+7fee3d114000-7fee3d116000 rw-p 0017c000 08:05 789196                     /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21
+7fee3d116000-7fee3d11a000 rw-p 00000000 00:00 0 
+7fee3d11a000-7fee3d11b000 r--s 00003000 08:05 28235810                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/aether-spi-1.13.1.jar
+7fee3d11b000-7fee3d11d000 r--s 00006000 08:05 28235812                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/aether-connector-wagon-1.13.1.jar
+7fee3d11d000-7fee3d122000 r--s 00034000 08:05 28235771                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gson-2.7.jar
+7fee3d122000-7fee3d127000 r--s 00040000 08:05 28235779                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/jsch-0.1.54.jar
+7fee3d127000-7fee3d136000 r--s 000d9000 08:05 28235778                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/ivy-2.2.0.jar
+7fee3d136000-7fee3d139000 r--s 0000d000 08:05 28235758                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-workers-4.1.jar
+7fee3d139000-7fee3d13e000 r-xp 00000000 08:05 27458649                   /home/vitaly/.gradle/native/25/linux-amd64/libnative-platform.so
+7fee3d13e000-7fee3d33d000 ---p 00005000 08:05 27458649                   /home/vitaly/.gradle/native/25/linux-amd64/libnative-platform.so
+7fee3d33d000-7fee3d33e000 rw-p 00004000 08:05 27458649                   /home/vitaly/.gradle/native/25/linux-amd64/libnative-platform.so
+7fee3d33e000-7fee3d34f000 r-xp 00000000 08:05 27716661                   /home/vitaly/android-studio/jre/jre/lib/amd64/libnio.so
+7fee3d34f000-7fee3d54e000 ---p 00011000 08:05 27716661                   /home/vitaly/android-studio/jre/jre/lib/amd64/libnio.so
+7fee3d54e000-7fee3d54f000 r--p 00010000 08:05 27716661                   /home/vitaly/android-studio/jre/jre/lib/amd64/libnio.so
+7fee3d54f000-7fee3d550000 rw-p 00011000 08:05 27716661                   /home/vitaly/android-studio/jre/jre/lib/amd64/libnio.so
+7fee3d550000-7fee3d566000 r-xp 00000000 08:05 27716663                   /home/vitaly/android-studio/jre/jre/lib/amd64/libnet.so
+7fee3d566000-7fee3d766000 ---p 00016000 08:05 27716663                   /home/vitaly/android-studio/jre/jre/lib/amd64/libnet.so
+7fee3d766000-7fee3d767000 r--p 00016000 08:05 27716663                   /home/vitaly/android-studio/jre/jre/lib/amd64/libnet.so
+7fee3d767000-7fee3d768000 rw-p 00017000 08:05 27716663                   /home/vitaly/android-studio/jre/jre/lib/amd64/libnet.so
+7fee3d768000-7fee3d772000 r--s 00116000 08:05 27716688                   /home/vitaly/android-studio/jre/jre/lib/ext/localedata.jar
+7fee3d772000-7fee3d78e000 r--s 00393000 08:05 27716694                   /home/vitaly/android-studio/jre/jre/lib/ext/cldrdata.jar
+7fee3d78e000-7fee3d78f000 r--s 00006000 08:05 28235666                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-wrapper-4.1.jar
+7fee3d78f000-7fee3d79c000 r--s 00043000 08:05 28235665                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-tooling-api-4.1.jar
+7fee3d79c000-7fee3d7ab000 r--s 000c8000 08:05 28235662                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/kotlin-stdlib-1.1.3-2.jar
+7fee3d7ab000-7fee3d7dd000 r--s 0021b000 08:05 28235661                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/kotlin-reflect-1.1.3-2.jar
+7fee3d7dd000-7fee3d994000 r--s 01786000 08:05 28235660                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/kotlin-compiler-embeddable-1.1.3-2.jar
+7fee3d994000-7fee3d995000 r--s 00000000 08:05 28235659                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-kotlin-dsl-tooling-models-0.10.3.jar
+7fee3d995000-7fee3d996000 r--s 00001000 08:05 28235657                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-kotlin-dsl-compiler-plugin-0.10.3.jar
+7fee3d996000-7fee3d998000 r--s 00003000 08:05 28235655                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/annotations-13.0.jar
+7fee3d998000-7fee3d9a2000 r--s 00073000 08:05 28235656                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-kotlin-dsl-0.10.3.jar
+7fee3d9a2000-7fee3d9a7000 r--s 00013000 08:05 28235672                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-resources-4.1.jar
+7fee3d9a7000-7fee3d9a9000 r--s 00005000 08:05 28235679                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-cli-4.1.jar
+7fee3d9a9000-7fee3d9ab000 r--s 00003000 08:05 28235686                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/jcl-over-slf4j-1.7.10.jar
+7fee3d9ab000-7fee3d9ac000 r--s 00005000 08:05 28235685                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/log4j-over-slf4j-1.7.10.jar
+7fee3d9ac000-7fee3d9ae000 r--s 00000000 08:05 28235684                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/jul-to-slf4j-1.7.10.jar
+7fee3d9ae000-7fee3d9b5000 r--s 0002c000 08:05 28235670                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-logging-4.1.jar
+7fee3d9b5000-7fee3d9c5000 r--s 00082000 08:05 28235675                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-model-core-4.1.jar
+7fee3d9c5000-7fee3d9c7000 r--s 00006000 08:05 28235676                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-base-services-groovy-4.1.jar
+7fee3d9c7000-7fee3d9d4000 r--s 00083000 08:05 28235695                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/commons-collections-3.2.2.jar
+7fee3d9d4000-7fee3da44000 r--s 00645000 08:05 28235692                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/groovy-all-2.4.11.jar
+7fee3da44000-7fee3da6c000 r--s 001cf000 08:05 28235688                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/guava-jdk5-17.0.jar
+7fee3da6c000-7fee3da8b000 r--s 001d1000 08:05 28235693                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/ant-1.9.6.jar
+7fee3da8b000-7fee3dad5000 r--s 00253000 08:05 28235668                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-core-4.1.jar
+7fee3dad5000-7fee3dad6000 ---p 00000000 00:00 0 
+7fee3dad6000-7fee3dbd6000 rw-p 00000000 00:00 0 
+7fee3dbd6000-7fee3dbd9000 ---p 00000000 00:00 0 
+7fee3dbd9000-7fee3dcd7000 rw-p 00000000 00:00 0 
+7fee3dcd7000-7fee3dcda000 ---p 00000000 00:00 0 
+7fee3dcda000-7fee3ddd8000 rw-p 00000000 00:00 0 
+7fee3ddd8000-7fee3dddb000 ---p 00000000 00:00 0 
+7fee3dddb000-7fee3ded9000 rw-p 00000000 00:00 0 
+7fee3ded9000-7fee3dedc000 ---p 00000000 00:00 0 
+7fee3dedc000-7fee3dfda000 rw-p 00000000 00:00 0 
+7fee3dfda000-7fee3dfdd000 ---p 00000000 00:00 0 
+7fee3dfdd000-7fee3e0db000 rw-p 00000000 00:00 0 
+7fee3e0db000-7fee3e0de000 ---p 00000000 00:00 0 
+7fee3e0de000-7fee3e1dc000 rw-p 00000000 00:00 0 
+7fee3e1dc000-7fee3e5e6000 r--p 00000000 08:05 788772                     /usr/lib/locale/locale-archive
+7fee3e5e6000-7fee3e5e9000 ---p 00000000 00:00 0 
+7fee3e5e9000-7fee3e6e7000 rw-p 00000000 00:00 0 
+7fee3e6e7000-7fee3e6ea000 ---p 00000000 00:00 0 
+7fee3e6ea000-7fee3e7e8000 rw-p 00000000 00:00 0 
+7fee3e7e8000-7fee3e7e9000 ---p 00000000 00:00 0 
+7fee3e7e9000-7fee40000000 rw-p 00000000 00:00 0 
+7fee40000000-7fee40024000 rw-p 00000000 00:00 0 
+7fee40024000-7fee44000000 ---p 00000000 00:00 0 
+7fee44000000-7fee44021000 rw-p 00000000 00:00 0 
+7fee44021000-7fee48000000 ---p 00000000 00:00 0 
+7fee48000000-7fee48022000 rw-p 00000000 00:00 0 
+7fee48022000-7fee4c000000 ---p 00000000 00:00 0 
+7fee4c000000-7fee4c002000 r--s 00007000 08:05 28235674                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-model-groovy-4.1.jar
+7fee4c002000-7fee4c003000 r--s 00002000 08:05 28235697                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-docs-4.1.jar
+7fee4c003000-7fee4c004000 r--s 00000000 08:05 28235694                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/javax.inject-1.jar
+7fee4c004000-7fee4c007000 r--s 00023000 08:05 28235698                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/jansi-1.14.jar
+7fee4c007000-7fee4c008000 r--s 00004000 08:05 28235700                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-freebsd-amd64-libcpp-0.14.jar
+7fee4c008000-7fee4c009000 r--s 00004000 08:05 28235701                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-freebsd-amd64-libstdcpp-0.14.jar
+7fee4c009000-7fee4c00a000 r--s 00004000 08:05 28235702                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-freebsd-i386-libcpp-0.14.jar
+7fee4c00a000-7fee4c00b000 r--s 00003000 08:05 28235703                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-freebsd-i386-libstdcpp-0.14.jar
+7fee4c00b000-7fee4c00c000 r--s 00002000 08:05 28235704                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-linux-amd64-0.14.jar
+7fee4c00c000-7fee4c00d000 r--s 00002000 08:05 28235705                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-linux-i386-0.14.jar
+7fee4c00d000-7fee4c00f000 r--s 00002000 08:05 28235706                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-osx-amd64-0.14.jar
+7fee4c00f000-7fee4c010000 r--s 00003000 08:05 28235707                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-osx-i386-0.14.jar
+7fee4c010000-7fee4c012000 r--s 0000b000 08:05 28235708                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-windows-amd64-0.14.jar
+7fee4c012000-7fee4c013000 r--s 0000b000 08:05 28235709                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-windows-i386-0.14.jar
+7fee4c013000-7fee4c014000 r--s 00001000 08:05 28235710                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-linux-amd64-ncurses5-0.14.jar
+7fee4c014000-7fee4c015000 r--s 00001000 08:05 28235711                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-linux-amd64-ncurses6-0.14.jar
+7fee4c015000-7fee50000000 rw-p 00000000 00:00 0 
+7fee50000000-7fee50021000 rw-p 00000000 00:00 0 
+7fee50021000-7fee54000000 ---p 00000000 00:00 0 
+7fee54000000-7fee54021000 rw-p 00000000 00:00 0 
+7fee54021000-7fee58000000 ---p 00000000 00:00 0 
+7fee58000000-7fee58021000 rw-p 00000000 00:00 0 
+7fee58021000-7fee5c000000 ---p 00000000 00:00 0 
+7fee5c000000-7fee5c001000 r--s 00001000 08:05 28235712                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-linux-i386-ncurses5-0.14.jar
+7fee5c001000-7fee5c005000 r--s 00012000 08:05 28235696                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-0.14.jar
+7fee5c005000-7fee5c008000 r--s 0000c000 08:05 28235673                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-native-4.1.jar
+7fee5c008000-7fee5c00a000 r--s 0000f000 08:05 28235681                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/reflectasm-1.07-shaded.jar
+7fee5c00a000-7fee5c00c000 r--s 00000000 08:05 28235714                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/minlog-1.2.jar
+7fee5c00c000-7fee5c00e000 r--s 00007000 08:05 28235715                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/objenesis-1.2.jar
+7fee5c00e000-7fee5c012000 r--s 00026000 08:05 28235680                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/kryo-2.20.jar
+7fee5c012000-7fee5c018000 r--s 0002b000 08:05 28235677                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-messaging-4.1.jar
+7fee5c018000-7fee5c01a000 r--s 00006000 08:05 28235671                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-process-services-4.1.jar
+7fee5c01a000-7fee5c068000 rw-p 00000000 00:00 0 
+7fee5c068000-7fee5c238000 r--s 03c46000 08:05 27581450                   /home/vitaly/android-studio/jre/jre/lib/rt.jar
+7fee5c238000-7fee5c239000 ---p 00000000 00:00 0 
+7fee5c239000-7fee5c339000 rw-p 00000000 00:00 0 
+7fee5c339000-7fee5c33a000 ---p 00000000 00:00 0 
+7fee5c33a000-7fee5c43a000 rw-p 00000000 00:00 0 
+7fee5c43a000-7fee5c43b000 ---p 00000000 00:00 0 
+7fee5c43b000-7fee5c53b000 rw-p 00000000 00:00 0 
+7fee5c53b000-7fee5c53c000 ---p 00000000 00:00 0 
+7fee5c53c000-7fee5c63c000 rw-p 00000000 00:00 0 
+7fee5c63c000-7fee5c63d000 ---p 00000000 00:00 0 
+7fee5c63d000-7fee5c73d000 rw-p 00000000 00:00 0 
+7fee5c73d000-7fee5c73e000 ---p 00000000 00:00 0 
+7fee5c73e000-7fee5c83e000 rw-p 00000000 00:00 0 
+7fee5c83e000-7fee5c83f000 ---p 00000000 00:00 0 
+7fee5c83f000-7fee5c93f000 rw-p 00000000 00:00 0 
+7fee5c93f000-7fee5c940000 ---p 00000000 00:00 0 
+7fee5c940000-7fee5ca62000 rw-p 00000000 00:00 0 
+7fee5ca62000-7fee5cc40000 ---p 00000000 00:00 0 
+7fee5cc40000-7fee5ccca000 rw-p 00000000 00:00 0 
+7fee5ccca000-7fee5d000000 ---p 00000000 00:00 0 
+7fee5d000000-7fee5f280000 rwxp 00000000 00:00 0 
+7fee5f280000-7fee6c000000 ---p 00000000 00:00 0 
+7fee6c000000-7fee6ccad000 rw-p 00000000 00:00 0 
+7fee6ccad000-7fee70000000 ---p 00000000 00:00 0 
+7fee70000000-7fee70005000 r--s 00041000 08:05 28235690                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/commons-lang-2.6.jar
+7fee70005000-7fee700be000 rw-p 00000000 00:00 0 
+7fee700be000-7fee7029c000 ---p 00000000 00:00 0 
+7fee7029c000-7fee70359000 rw-p 00000000 00:00 0 
+7fee70359000-7fee7039c000 ---p 00000000 00:00 0 
+7fee7039c000-7fee7039d000 rw-p 00000000 00:00 0 
+7fee7039d000-7fee703b7000 r-xp 00000000 08:05 27716638                   /home/vitaly/android-studio/jre/jre/lib/amd64/libzip.so
+7fee703b7000-7fee705b7000 ---p 0001a000 08:05 27716638                   /home/vitaly/android-studio/jre/jre/lib/amd64/libzip.so
+7fee705b7000-7fee705b8000 r--p 0001a000 08:05 27716638                   /home/vitaly/android-studio/jre/jre/lib/amd64/libzip.so
+7fee705b8000-7fee705b9000 rw-p 0001b000 08:05 27716638                   /home/vitaly/android-studio/jre/jre/lib/amd64/libzip.so
+7fee705b9000-7fee705c4000 r-xp 00000000 08:05 12085075                   /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7fee705c4000-7fee707c3000 ---p 0000b000 08:05 12085075                   /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7fee707c3000-7fee707c4000 r--p 0000a000 08:05 12085075                   /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7fee707c4000-7fee707c5000 rw-p 0000b000 08:05 12085075                   /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7fee707c5000-7fee707cb000 rw-p 00000000 00:00 0 
+7fee707cb000-7fee707d6000 r-xp 00000000 08:05 12085083                   /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7fee707d6000-7fee709d5000 ---p 0000b000 08:05 12085083                   /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7fee709d5000-7fee709d6000 r--p 0000a000 08:05 12085083                   /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7fee709d6000-7fee709d7000 rw-p 0000b000 08:05 12085083                   /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7fee709d7000-7fee709ed000 r-xp 00000000 08:05 12083856                   /lib/x86_64-linux-gnu/libnsl-2.23.so
+7fee709ed000-7fee70bec000 ---p 00016000 08:05 12083856                   /lib/x86_64-linux-gnu/libnsl-2.23.so
+7fee70bec000-7fee70bed000 r--p 00015000 08:05 12083856                   /lib/x86_64-linux-gnu/libnsl-2.23.so
+7fee70bed000-7fee70bee000 rw-p 00016000 08:05 12083856                   /lib/x86_64-linux-gnu/libnsl-2.23.so
+7fee70bee000-7fee70bf0000 rw-p 00000000 00:00 0 
+7fee70bf0000-7fee70bf8000 r-xp 00000000 08:05 12085065                   /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7fee70bf8000-7fee70df7000 ---p 00008000 08:05 12085065                   /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7fee70df7000-7fee70df8000 r--p 00007000 08:05 12085065                   /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7fee70df8000-7fee70df9000 rw-p 00008000 08:05 12085065                   /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7fee70df9000-7fee70e26000 r-xp 00000000 08:05 27716637                   /home/vitaly/android-studio/jre/jre/lib/amd64/libjava.so
+7fee70e26000-7fee71025000 ---p 0002d000 08:05 27716637                   /home/vitaly/android-studio/jre/jre/lib/amd64/libjava.so
+7fee71025000-7fee71026000 r--p 0002c000 08:05 27716637                   /home/vitaly/android-studio/jre/jre/lib/amd64/libjava.so
+7fee71026000-7fee71028000 rw-p 0002d000 08:05 27716637                   /home/vitaly/android-studio/jre/jre/lib/amd64/libjava.so
+7fee71028000-7fee71038000 r-xp 00000000 08:05 27716643                   /home/vitaly/android-studio/jre/jre/lib/amd64/libverify.so
+7fee71038000-7fee71237000 ---p 00010000 08:05 27716643                   /home/vitaly/android-studio/jre/jre/lib/amd64/libverify.so
+7fee71237000-7fee71239000 r--p 0000f000 08:05 27716643                   /home/vitaly/android-studio/jre/jre/lib/amd64/libverify.so
+7fee71239000-7fee7123a000 rw-p 00011000 08:05 27716643                   /home/vitaly/android-studio/jre/jre/lib/amd64/libverify.so
+7fee7123a000-7fee71241000 r-xp 00000000 08:05 12085085                   /lib/x86_64-linux-gnu/librt-2.23.so
+7fee71241000-7fee71440000 ---p 00007000 08:05 12085085                   /lib/x86_64-linux-gnu/librt-2.23.so
+7fee71440000-7fee71441000 r--p 00006000 08:05 12085085                   /lib/x86_64-linux-gnu/librt-2.23.so
+7fee71441000-7fee71442000 rw-p 00007000 08:05 12085085                   /lib/x86_64-linux-gnu/librt-2.23.so
+7fee71442000-7fee7154a000 r-xp 00000000 08:05 12082226                   /lib/x86_64-linux-gnu/libm-2.23.so
+7fee7154a000-7fee71749000 ---p 00108000 08:05 12082226                   /lib/x86_64-linux-gnu/libm-2.23.so
+7fee71749000-7fee7174a000 r--p 00107000 08:05 12082226                   /lib/x86_64-linux-gnu/libm-2.23.so
+7fee7174a000-7fee7174b000 rw-p 00108000 08:05 12082226                   /lib/x86_64-linux-gnu/libm-2.23.so
+7fee7174b000-7fee72343000 r-xp 00000000 08:05 27716647                   /home/vitaly/android-studio/jre/jre/lib/amd64/server/libjvm.so
+7fee72343000-7fee72543000 ---p 00bf8000 08:05 27716647                   /home/vitaly/android-studio/jre/jre/lib/amd64/server/libjvm.so
+7fee72543000-7fee725e2000 r--p 00bf8000 08:05 27716647                   /home/vitaly/android-studio/jre/jre/lib/amd64/server/libjvm.so
+7fee725e2000-7fee7260b000 rw-p 00c97000 08:05 27716647                   /home/vitaly/android-studio/jre/jre/lib/amd64/server/libjvm.so
+7fee7260b000-7fee7264f000 rw-p 00000000 00:00 0 
+7fee7264f000-7fee72667000 r-xp 00000000 08:05 12085047                   /lib/x86_64-linux-gnu/libpthread-2.23.so
+7fee72667000-7fee72866000 ---p 00018000 08:05 12085047                   /lib/x86_64-linux-gnu/libpthread-2.23.so
+7fee72866000-7fee72867000 r--p 00017000 08:05 12085047                   /lib/x86_64-linux-gnu/libpthread-2.23.so
+7fee72867000-7fee72868000 rw-p 00018000 08:05 12085047                   /lib/x86_64-linux-gnu/libpthread-2.23.so
+7fee72868000-7fee7286c000 rw-p 00000000 00:00 0 
+7fee7286c000-7fee7286f000 r-xp 00000000 08:05 12085053                   /lib/x86_64-linux-gnu/libdl-2.23.so
+7fee7286f000-7fee72a6e000 ---p 00003000 08:05 12085053                   /lib/x86_64-linux-gnu/libdl-2.23.so
+7fee72a6e000-7fee72a6f000 r--p 00002000 08:05 12085053                   /lib/x86_64-linux-gnu/libdl-2.23.so
+7fee72a6f000-7fee72a70000 rw-p 00003000 08:05 12085053                   /lib/x86_64-linux-gnu/libdl-2.23.so
+7fee72a70000-7fee72c30000 r-xp 00000000 08:05 12085049                   /lib/x86_64-linux-gnu/libc-2.23.so
+7fee72c30000-7fee72e30000 ---p 001c0000 08:05 12085049                   /lib/x86_64-linux-gnu/libc-2.23.so
+7fee72e30000-7fee72e34000 r--p 001c0000 08:05 12085049                   /lib/x86_64-linux-gnu/libc-2.23.so
+7fee72e34000-7fee72e36000 rw-p 001c4000 08:05 12085049                   /lib/x86_64-linux-gnu/libc-2.23.so
+7fee72e36000-7fee72e3a000 rw-p 00000000 00:00 0 
+7fee72e3a000-7fee72e50000 r-xp 00000000 08:05 27581419                   /home/vitaly/android-studio/jre/lib/amd64/jli/libjli.so
+7fee72e50000-7fee7304f000 ---p 00016000 08:05 27581419                   /home/vitaly/android-studio/jre/lib/amd64/jli/libjli.so
+7fee7304f000-7fee73050000 r--p 00015000 08:05 27581419                   /home/vitaly/android-studio/jre/lib/amd64/jli/libjli.so
+7fee73050000-7fee73051000 rw-p 00016000 08:05 27581419                   /home/vitaly/android-studio/jre/lib/amd64/jli/libjli.so
+7fee73051000-7fee73077000 r-xp 00000000 08:05 12085045                   /lib/x86_64-linux-gnu/ld-2.23.so
+7fee73077000-7fee73078000 r--s 00001000 08:05 28235713                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-linux-i386-ncurses6-0.14.jar
+7fee73078000-7fee7307a000 r--s 00000000 08:05 28235669                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-jvm-services-4.1.jar
+7fee7307a000-7fee7307b000 r--s 00000000 08:05 28235691                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/jcip-annotations-1.0.jar
+7fee7307b000-7fee7307e000 r--s 00006000 08:05 28235689                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/jsr305-1.3.9.jar
+7fee7307e000-7fee7307f000 r--s 00007000 08:05 28235687                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/slf4j-api-1.7.10.jar
+7fee7307f000-7fee73083000 r--s 00027000 08:05 28235683                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/commons-io-2.2.jar
+7fee73083000-7fee7308f000 r--s 00053000 08:05 28235678                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-base-services-4.1.jar
+7fee7308f000-7fee73151000 rw-p 00000000 00:00 0 
+7fee73151000-7fee73154000 ---p 00000000 00:00 0 
+7fee73154000-7fee73256000 rw-p 00000000 00:00 0 
+7fee73256000-7fee7325e000 r--s 000bd000 08:05 28235682                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/asm-debug-all-6.0_ALPHA.jar
+7fee7325e000-7fee7325f000 r--s 00004000 08:05 28235699                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/ant-launcher-1.9.6.jar
+7fee7325f000-7fee7326b000 r--s 0005c000 08:05 28235663                   /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-launcher-4.1.jar
+7fee7326b000-7fee73273000 rw-s 00000000 08:05 11824695                   /tmp/hsperfdata_vitaly/3514
+7fee73273000-7fee73274000 rw-p 00000000 00:00 0 
+7fee73274000-7fee73275000 ---p 00000000 00:00 0 
+7fee73275000-7fee73276000 rw-p 00000000 00:00 0 
+7fee73276000-7fee73277000 r--p 00025000 08:05 12085045                   /lib/x86_64-linux-gnu/ld-2.23.so
+7fee73277000-7fee73278000 rw-p 00026000 08:05 12085045                   /lib/x86_64-linux-gnu/ld-2.23.so
+7fee73278000-7fee73279000 rw-p 00000000 00:00 0 
+7fff241b0000-7fff241d1000 rw-p 00000000 00:00 0                          [stack]
+7fff241f6000-7fff241f9000 r--p 00000000 00:00 0                          [vvar]
+7fff241f9000-7fff241fb000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+VM Arguments:
+jvm_args: -Xmx1536m -Dfile.encoding=UTF-8 -Duser.country=RU -Duser.language=ru -Duser.variant 
+java_command: org.gradle.launcher.daemon.bootstrap.GradleDaemon 4.1
+java_class_path (initial): /home/vitaly/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-launcher-4.1.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+LD_LIBRARY_PATH=/home/vitaly/android-studio/bin:
+SHELL=/bin/bash
+DISPLAY=:0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0x9ebc60], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0x9ebc60], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0x84cf60], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0x84cf60], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0x84cf60], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0x84cf60], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR1: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGUSR2: [libjvm.so+0x84ce30], sa_mask[0]=00100000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: [libjvm.so+0x84d020], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGINT: [libjvm.so+0x84d020], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGTERM: [libjvm.so+0x84d020], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGQUIT: [libjvm.so+0x84d020], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+
+
+---------------  S Y S T E M  ---------------
+
+OS:DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=16.04
+DISTRIB_CODENAME=xenial
+DISTRIB_DESCRIPTION="Ubuntu 16.04.4 LTS"
+
+uname:Linux 4.4.0-116-generic #140-Ubuntu SMP Mon Feb 12 21:23:04 UTC 2018 x86_64
+libc:glibc 2.23 NPTL 2.23 
+rlimit: STACK 8192k, CORE 0k, NPROC 15544, NOFILE 1048576, AS infinity
+load average:2,70 1,72 1,08
+
+/proc/meminfo:
+MemTotal:        4026856 kB
+MemFree:          114708 kB
+MemAvailable:      53724 kB
+Buffers:            8884 kB
+Cached:           185380 kB
+SwapCached:            0 kB
+Active:          3525124 kB
+Inactive:         146824 kB
+Active(anon):    3479508 kB
+Inactive(anon):   112796 kB
+Active(file):      45616 kB
+Inactive(file):    34028 kB
+Unevictable:         200 kB
+Mlocked:             200 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:              2152 kB
+Writeback:          2220 kB
+AnonPages:       3478476 kB
+Mapped:           205684 kB
+Shmem:            114080 kB
+Slab:              77604 kB
+SReclaimable:      35576 kB
+SUnreclaim:        42028 kB
+KernelStack:       12480 kB
+PageTables:        46172 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     2013428 kB
+Committed_AS:    8509368 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:   1679360 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:      263812 kB
+DirectMap2M:     3911680 kB
+
+
+CPU:total 8 (initial active 8) (4 cores per cpu, 2 threads per core) family 6 model 42 stepping 7, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, aes, clmul, ht, tsc, tscinvbit
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 42
+model name	: Intel(R) Core(TM) i7-2600 CPU @ 3.40GHz
+stepping	: 7
+microcode	: 0x14
+cpu MHz		: 1737.187
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 8
+core id		: 0
+cpu cores	: 4
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx lahf_lm epb retpoline kaiser tpr_shadow vnmi flexpriority ept vpid xsaveopt dtherm ida arat pln pts
+bugs		: cpu_meltdown spectre_v1 spectre_v2
+bogomips	: 6822.79
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 42
+model name	: Intel(R) Core(TM) i7-2600 CPU @ 3.40GHz
+stepping	: 7
+microcode	: 0x14
+cpu MHz		: 1599.859
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 8
+core id		: 1
+cpu cores	: 4
+apicid		: 2
+initial apicid	: 2
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx lahf_lm epb retpoline kaiser tpr_shadow vnmi flexpriority ept vpid xsaveopt dtherm ida arat pln pts
+bugs		: cpu_meltdown spectre_v1 spectre_v2
+bogomips	: 6822.79
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 2
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 42
+model name	: Intel(R) Core(TM) i7-2600 CPU @ 3.40GHz
+stepping	: 7
+microcode	: 0x14
+cpu MHz		: 1799.875
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 8
+core id		: 2
+cpu cores	: 4
+apicid		: 4
+initial apicid	: 4
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx lahf_lm epb retpoline kaiser tpr_shadow vnmi flexpriority ept vpid xsaveopt dtherm ida arat pln pts
+bugs		: cpu_meltdown spectre_v1 spectre_v2
+bogomips	: 6822.79
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 3
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 42
+model name	: Intel(R) Core(TM) i7-2600 CPU @ 3.40GHz
+stepping	: 7
+microcode	: 0x14
+cpu MHz		: 1712.617
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 8
+core id		: 3
+cpu cores	: 4
+apicid		: 6
+initial apicid	: 6
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx lahf_lm epb retpoline kaiser tpr_shadow vnmi flexpriority ept vpid xsaveopt dtherm ida arat pln pts
+bugs		: cpu_meltdown spectre_v1 spectre_v2
+bogomips	: 6822.79
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 4
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 42
+model name	: Intel(R) Core(TM) i7-2600 CPU @ 3.40GHz
+stepping	: 7
+microcode	: 0x14
+cpu MHz		: 1783.406
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 8
+core id		: 0
+cpu cores	: 4
+apicid		: 1
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx lahf_lm epb retpoline kaiser tpr_shadow vnmi flexpriority ept vpid xsaveopt dtherm ida arat pln pts
+bugs		: cpu_meltdown spectre_v1 spectre_v2
+bogomips	: 6822.79
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 5
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 42
+model name	: Intel(R) Core(TM) i7-2600 CPU @ 3.40GHz
+stepping	: 7
+microcode	: 0x14
+cpu MHz		: 1693.359
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 8
+core id		: 1
+cpu cores	: 4
+apicid		: 3
+initial apicid	: 3
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx lahf_lm epb retpoline kaiser tpr_shadow vnmi flexpriority ept vpid xsaveopt dtherm ida arat pln pts
+bugs		: cpu_meltdown spectre_v1 spectre_v2
+bogomips	: 6822.79
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 6
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 42
+model name	: Intel(R) Core(TM) i7-2600 CPU @ 3.40GHz
+stepping	: 7
+microcode	: 0x14
+cpu MHz		: 1623.500
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 8
+core id		: 2
+cpu cores	: 4
+apicid		: 5
+initial apicid	: 5
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx lahf_lm epb retpoline kaiser tpr_shadow vnmi flexpriority ept vpid xsaveopt dtherm ida arat pln pts
+bugs		: cpu_meltdown spectre_v1 spectre_v2
+bogomips	: 6822.79
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 7
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 42
+model name	: Intel(R) Core(TM) i7-2600 CPU @ 3.40GHz
+stepping	: 7
+microcode	: 0x14
+cpu MHz		: 1614.867
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 8
+core id		: 3
+cpu cores	: 4
+apicid		: 7
+initial apicid	: 7
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx lahf_lm epb retpoline kaiser tpr_shadow vnmi flexpriority ept vpid xsaveopt dtherm ida arat pln pts
+bugs		: cpu_meltdown spectre_v1 spectre_v2
+bogomips	: 6822.79
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 4026856k(114708k free), swap 0k(0k free)
+
+vm_info: OpenJDK 64-Bit Server VM (25.152-b01) for linux-amd64 JRE (1.8.0_152-release-915-b01), built by "builder" with gcc 4.8.4
+
+time: Sun Mar 18 21:01:03 2018
+elapsed time: 181 seconds (0d 0h 3m 1s)
+
