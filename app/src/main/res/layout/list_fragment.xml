@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         android:id="@+id/recyclerView"
         android:paddingTop="@dimen/list_padding_top"
+        android:clipToPadding="false"
         >
 
     </android.support.v7.widget.RecyclerView>

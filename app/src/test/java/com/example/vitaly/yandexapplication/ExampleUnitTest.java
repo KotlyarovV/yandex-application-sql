@@ -1,9 +1,14 @@
 package com.example.vitaly.yandexapplication;
 
+import android.graphics.Color;
+
+import org.json.JSONException;
 import org.junit.Test;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.TimeZone;
 
 import static org.junit.Assert.*;
@@ -42,4 +47,6 @@ public class ExampleUnitTest {
         //sdf.setTimeZone(TimeZone.getDefault());
         System.out.print(format.format(ff));
     }
+
+
 }

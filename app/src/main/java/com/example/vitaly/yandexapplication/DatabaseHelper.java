@@ -11,6 +11,7 @@ import android.support.annotation.NonNull;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -30,6 +31,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_CREATED = "created";
     public static final String COLUMN_EDITED = "edited";
     public static final String COLUMN_VIEWED = "viewed";
+
+    public static HashMap<SortOption, String> sortOptions = new HashMap<SortOption, String>()
+    {
+        {
+            put(SortOption.CREATING_DATE, COLUMN_CREATED);
+            put(SortOption.EDITION_DATE, COLUMN_EDITED);
+            put(SortOption.VIEW_DATE, COLUMN_VIEWED);
+            put(SortOption.NAME, COLUMN_TITLE);
+        }
+    };
+
+    public static HashMap<SortMode, String> sortModes = new HashMap<SortMode, String>()
+    {
+        {
+            put(SortMode.ASCENDING, "ASC");
+            put(SortMode.DESCENDING, "DESC");
+        }
+    };
+
+    private String[] columns =
+            {
+                    COLUMN_TITLE,
+                    COLUMN_DESCRIPTION,
+                    COLUMN_COLOR,
+                    COLUMN_CREATED,
+                    COLUMN_VIEWED,
+                    COLUMN_EDITED
+            };
 
     private static final String SQL_CREATE_TABLE_NOTES =
             "CREATE TABLE " + TABLE_NOTES + " (" +
@@ -97,30 +126,74 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @NonNull
     public List<ListNote> getAllNodes() throws ParseException {
+        return getAllSortedAndSelected(
+                SortOption.CREATING_DATE,
+                SortMode.ASCENDING,
+                FiltrationMode.NONE,
+                null,
+                null
+        );
+    }
+
+
+    @NonNull
+    public List<ListNote> getAllSorted(SortOption sortOption, SortMode sortMode) throws ParseException {
+        return getAllSortedAndSelected(
+                sortOption,
+                sortMode,
+                FiltrationMode.NONE,
+                null,
+                null
+        );
+    }
+
+
+    public List<ListNote> getAllSelected(
+            FiltrationMode filtrationMode,
+            SortOption sortOption,
+            String[] filtrationArgs) throws ParseException {
+        return getAllSortedAndSelected(sortOption, SortMode.ASCENDING, filtrationMode, sortOption, filtrationArgs);
+    }
+
+
+    @NonNull
+    public List<ListNote> getAllSortedAndSelected(
+            SortOption sortOption,
+            SortMode sortMode,
+            FiltrationMode filtrationMode,
+            SortOption filterBy,
+            String[] filtrationArgs) throws ParseException {
         SQLiteDatabase database = getReadableDatabase();
         List<ListNote> allNotes = new ArrayList<>();
-        String[] columns =
-                {
-                        COLUMN_TITLE,
-                        COLUMN_DESCRIPTION,
-                        COLUMN_COLOR,
-                        COLUMN_CREATED,
-                        COLUMN_VIEWED,
-                        COLUMN_EDITED
-                };
-        //String sortOrder = COLUMN_CREATED + " DESC";
-        String sortOrder = COLUMN_CREATED + " ASC";
+        String sortOrder = sortOptions.get(sortOption) + " " + sortModes.get(sortMode);
+
+        String selection = null;
+        String[] selectionArgs = null;
+
+        if (filtrationMode != FiltrationMode.NONE) {
+            if (filtrationMode == FiltrationMode.DATE_RANGE) {
+                selection = sortOptions.get(filterBy) + " >= ? AND " + sortOptions.get(filterBy) + " <= ?";
+                selectionArgs = filtrationArgs;
+            }
+            if (filtrationMode == FiltrationMode.DATE) {
+                //selection = sortOptions.get(filterBy) + " LIKE " + "'" + filtrationArgs[0].substring(0, 10) + "%'";
+                selection = sortOptions.get(filterBy) + " LIKE ?";
+                selectionArgs = new String[]{ filtrationArgs[0].substring(0, 10) + "%" };
+            }
+        }
+
         Cursor cursor = null;
         try {
             cursor = database.query(
                     TABLE_NOTES,
                     columns,
-                    null,
-                    null,
+                    selection,
+                    selectionArgs,
                     null,
                     null,
                     sortOrder
             );
+
             if (cursor.moveToFirst()) {
                 do {
 

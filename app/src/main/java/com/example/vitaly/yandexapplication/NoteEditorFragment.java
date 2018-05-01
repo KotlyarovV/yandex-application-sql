@@ -27,7 +27,7 @@ import static android.app.Activity.RESULT_OK;
  * Created by Vitaly on 09.04.2018.
  */
 
-public class NoteEditorFragment extends Fragment {
+public class NoteEditorFragment extends Fragment implements OnBackPressedListener {
 
     public static final String NODE_EDITOR_DATA = "node_editor_data";
     public static final int DELETE_RESULT = 1;
@@ -131,10 +131,15 @@ public class NoteEditorFragment extends Fragment {
     private ListNote getRedactedNode() {
         String caption = captionEditor.getText().toString();
         String description = descriptionEditor.getText().toString();
+        Date date = new Date();
 
-        note.setCaption(caption);
-        note.setDescription(description);
-        note.setEditingDate(new Date());
+        if (!(caption.equals(note.getCaption()) && description.equals(note.getDescription()))) {
+            note.setCaption(caption);
+            note.setDescription(description);
+            note.setEditingDate(date);
+        }
+
+        note.setViewingDate(date);
 
         return note;
     }
@@ -148,14 +153,8 @@ public class NoteEditorFragment extends Fragment {
         }
     }
 
-    public void save(View view) {
 
-        if (captionIsEmpty()) {
-            showAlert();
-            return;
-        }
-
-        ListNote listNote = (redactionMode) ? getRedactedNode() : getNewNote();
+    private void returnBack(ListNote listNote) {
         Intent backIntent = new Intent();
 
         if (redactionMode) {
@@ -167,9 +166,20 @@ public class NoteEditorFragment extends Fragment {
         backIntent.putExtra(NODE_EDITOR_DATA, listNote);
         getTargetFragment()
                 .onActivityResult(getTargetRequestCode(),
-                RESULT_OK, backIntent);
+                        RESULT_OK, backIntent);
         hideKeyboard();
         getFragmentManager().popBackStack();
+    }
+
+    public void save(View view) {
+
+        if (captionIsEmpty()) {
+            showAlert();
+            return;
+        }
+
+        ListNote listNote = (redactionMode) ? getRedactedNode() : getNewNote();
+        returnBack(listNote);
     }
 
     public void delete(View view) {
@@ -184,5 +194,17 @@ public class NoteEditorFragment extends Fragment {
         getFragmentManager().popBackStack();
     }
 
+
+    @Override
+    public boolean needSpecialBackListener() {
+        return redactionMode;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (redactionMode) {
+            returnBack(getRedactedNode());
+        }
+    }
 
 }

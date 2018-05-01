@@ -3,6 +3,8 @@ package com.example.vitaly.yandexapplication;
 import android.graphics.Color;
 import android.graphics.Shader;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,17 +18,17 @@ import java.util.TimeZone;
 
 public class ListNote implements Serializable{
 
-    private int color;
+
     private String caption;
     private String description;
-
+    private int color;
     private Date creationDate;
     private Date editingDate;
     private Date viewingDate;
 
-    private SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm", Locale.getDefault());
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd",   Locale.getDefault());
-    private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZZZZZ");
+    private transient SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm", Locale.getDefault());
+    private transient SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd",   Locale.getDefault());
+    public transient static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZZZZZ");
 
     public ListNote(int color, String caption, String description, Date creationDate) {
         this.color = color;

@@ -1,10 +1,13 @@
 package com.example.vitaly.yandexapplication;
 
 import android.app.ActionBar;
+import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +20,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -89,17 +93,13 @@ public class MainActivity extends AppCompatActivity
         outState.putSerializable(NOTES, notes);
     }
 
-    @Override
-    public void onBackPressed() {
-        RotatedDrawerLayout drawer = (RotatedDrawerLayout) findViewById(R.id.drawer_layout);
-        int orientation = this.getResources().getConfiguration().orientation;
-        if (drawer.isDrawerOpen(GravityCompat.START) && orientation == Configuration.ORIENTATION_PORTRAIT) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+    public void showToast(String stringText) {
+        Context context = this.getApplicationContext();
+        CharSequence text = stringText;
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }
-
 
     public void setActionBar(int color, String title) {
         ActionBar actionBar = getActionBar();
@@ -138,4 +138,31 @@ public class MainActivity extends AppCompatActivity
         return true;
 
     }
+
+
+
+    @Override
+    public void onBackPressed() {
+        RotatedDrawerLayout drawer = (RotatedDrawerLayout) findViewById(R.id.drawer_layout);
+        int orientation = this.getResources().getConfiguration().orientation;
+        if (drawer.isDrawerOpen(GravityCompat.START) && orientation == Configuration.ORIENTATION_PORTRAIT) {
+            drawer.closeDrawer(GravityCompat.START);
+            return;
+        }
+        FragmentManager fm = getSupportFragmentManager();
+        OnBackPressedListener backPressedListener = null;
+        for (Fragment fragment: fm.getFragments()) {
+            if (fragment instanceof  OnBackPressedListener) {
+                backPressedListener = (OnBackPressedListener) fragment;
+                break;
+            }
+        }
+
+        if (backPressedListener != null && backPressedListener.needSpecialBackListener()) {
+            backPressedListener.onBackPressed();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.example.vitaly.yandexapplication;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -15,16 +16,25 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import org.json.JSONException;
+
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
+import static android.content.Context.ACCESSIBILITY_SERVICE;
 
 /**
  * Created by Vitaly on 09.04.2018.
@@ -34,14 +44,19 @@ public class ListFragment extends Fragment {
 
     public static final int REQUEST_CODE_CREATE_NOTE = 1;
     public static final int REQUEST_CODE_REDACT_NOTE = 2;
+    public static final int REQUEST_CODE_SORT = 3;
+    public static final int REQUEST_CODE_FILTER = 4;
 
     public static final String REDACTED_NOTE = "REDACTED_NOTE";
     public static final String REDACTED_NOTE_NUMBER = "REDACTED_NOTE_NUMBER";
     public static final String ITEMS = "ITEMS";
+    public static final String SORT = "SORT";
+    public static final String FILTER = "FILTER";
 
     public ArrayList<ListNote> notes;
     public DatabaseHelper databaseHelper;
 
+    private MemoryHelper memoryHelper;
     private RecyclerView recyclerView;
     private ListNoteAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -53,6 +68,7 @@ public class ListFragment extends Fragment {
         notes = ((MainActivity) getActivity()).notes;
         databaseHelper = ((MainActivity) getActivity()).databaseHelper;
         adapter = new ListNoteAdapter(getContext(), notes, handleItemClick(getContext()));
+        memoryHelper = new MemoryHelper(notes);
     }
 
     @Nullable
@@ -66,6 +82,7 @@ public class ListFragment extends Fragment {
         layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setAutoMeasureEnabled(false);
         recyclerView.setLayoutManager(layoutManager);
+        setHasOptionsMenu(true);
 
         FloatingActionButton fab = rootView.findViewById(R.id.fab);
         fab.setOnClickListener(handleAddButtonClick(getContext()));
@@ -73,7 +90,59 @@ public class ListFragment extends Fragment {
         return rootView;
     }
 
+    @Override
+    public void onCreateOptionsMenu(
+            Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.action_bar_menu, menu);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_settings_export:
+                try {
+                    ArrayList<ListNote> notesFromBackUp = memoryHelper.readFromBackUp();
+                    this.notes.clear();
+                    notes.addAll(notesFromBackUp);
+                    adapter.notifyDataSetChanged();
+                    databaseHelper.deleteNotes(false);
+                    databaseHelper.addNotes(notes);
+                    ((MainActivity)getActivity()).showToast("Notes were downloaded from backup");
+                }
+                catch (ParseException e){
+                    ((MainActivity)getActivity()).showToast("Can't parse file.");
+                }
+                catch (IOException a){
+                    ((MainActivity)getActivity()).showToast("Can't read backup file.");
+                }
+                return true;
+            case R.id.action_settings_filter:
+                FiltrationFragment filtrationFragment = new FiltrationFragment();
+                filtrationFragment.setTargetFragment(this, REQUEST_CODE_FILTER);
+                filtrationFragment.show(getFragmentManager(), FILTER);
+                return true;
+            case R.id.action_settings_import:
+                try {
+                    memoryHelper.makeBackUp();
+                    ((MainActivity)getActivity()).showToast("Backup was made successfully");
+                }
+                catch (JSONException e){
+                    ((MainActivity)getActivity()).showToast("Can't make backup. Format problem.");
+                }
+                catch (IOException a){
+                    ((MainActivity)getActivity()).showToast("Can't write backup to file.");
+                }
+                return true;
+            case R.id.action_settings_sort:
+                SortFragment sortFragment = new SortFragment();
+                sortFragment.setTargetFragment(this, REQUEST_CODE_SORT);
+                sortFragment.show(getFragmentManager(), SORT);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     private View.OnClickListener handleItemClick(final Context context) {
         return new View.OnClickListener() {
@@ -142,6 +211,45 @@ public class ListFragment extends Fragment {
             databaseHelper.deleteNote(notes.get(i));
             notes.remove(i);
             adapter.notifyDataSetChanged();
+        }
+
+        if (requestCode == REQUEST_CODE_SORT && resultCode == Activity.RESULT_OK) {
+            SortMode sortMode = (SortMode) data.getSerializableExtra(SortFragment.MODE);
+            SortOption sortOption = (SortOption) data.getSerializableExtra(SortFragment.OPTION);
+            try {
+                notes.clear();
+                notes.addAll(databaseHelper.getAllSorted(sortOption, sortMode));
+                adapter.notifyDataSetChanged();
+            } catch (ParseException ex) {
+
+            }
+        }
+
+        if (requestCode == REQUEST_CODE_FILTER && resultCode == RESULT_OK) {
+            FiltrationMode filtrationMode = (FiltrationMode) data.getSerializableExtra(FiltrationFragment.FILTRATION_MODE);
+            SortOption filterBy = (SortOption) data.getSerializableExtra(FiltrationFragment.FILTRATION_BY_MODE);
+            String[] filtrationArgs = null;
+            if (filtrationMode == FiltrationMode.DATE_RANGE) {
+                String dateFrom = data.getStringExtra(FiltrationFragment.DATE_PICKER_FROM);
+                String dateTo = data.getStringExtra(FiltrationFragment.DATE_PICKER_TO);
+                filtrationArgs = new String[] { dateFrom, dateTo };
+            }
+            if (filtrationMode == FiltrationMode.DATE) {
+                String date = data.getStringExtra(FiltrationFragment.DATE_PICKER);
+                filtrationArgs = new String[] { date };
+            }
+
+            try {
+                notes.clear();
+                notes.addAll(databaseHelper.getAllSelected(
+                        filtrationMode,
+                        filterBy,
+                        filtrationArgs
+                ));
+                adapter.notifyDataSetChanged();
+            } catch (ParseException ex) {
+
+            }
         }
 
     }

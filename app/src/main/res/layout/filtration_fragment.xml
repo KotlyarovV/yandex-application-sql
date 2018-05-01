@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/filter_constraint_layout">
+    <RadioGroup
+        android:id="@+id/filter_radio_group_mode_filter_by"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/filter_radio_group_filter_mode"
+        android:layout_marginBottom="10dp"
+
+        >
+        <RadioButton
+            android:id="@+id/filter_radio_button_mode_creation_date"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:text="Use creation date"/>
+        <RadioButton
+            android:id="@+id/filter_radio_button_mode_view_date"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_height="40dp"
+            android:text="Use view date"/>
+        <RadioButton
+            android:id="@+id/filter_radio_button_mode_edition_date"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_height="40dp"
+            android:text="Use edition date"/>
+    </RadioGroup>
+    <RadioGroup
+        android:id="@+id/filter_radio_group_filter_mode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/filter_radio_group_mode_filter_by"
+        app:layout_constraintBottom_toTopOf="@id/filter_ok_button"
+        android:layout_marginBottom="10dp"
+
+        >
+        <RadioButton
+            android:id="@+id/filter_radio_button_date_range"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:text="Filter by date range"/>
+        <RadioButton
+            android:id="@+id/filter_radio_button_date"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_height="40dp"
+            android:text="Filter by date"/>
+    </RadioGroup>
+    <DatePicker
+        android:id="@+id/filter_date_picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:calendarViewShown="false"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/filter_radio_group_filter_mode"
+        app:layout_constraintBottom_toTopOf="@id/filter_ok_button"
+        android:datePickerMode="spinner"/>
+
+        <!--android:visibility="gone"-->
+
+    <Button
+        android:id="@+id/filter_date_from"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/filter_radio_group_filter_mode"
+
+        app:layout_constraintBottom_toTopOf="@+id/filter_date_to"
+        android:background="@color/description_editor_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        android:layout_marginBottom="10dp"
+        android:text="Set start of period"
+        />
+    <Button
+        android:id="@+id/filter_date_to"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/filter_date_from"
+        app:layout_constraintBottom_toTopOf="@id/filter_ok_button"
+        android:background="@color/description_editor_color"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Set end of period"
+        />
+    <Button
+        android:id="@+id/filter_ok_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/filter_radio_group_filter_mode"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="OK"/>
+</android.support.constraint.ConstraintLayout>

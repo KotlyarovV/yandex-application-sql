@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_settings_sort"
+        android:orderInCategory="100"
+        android:title="Sort"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_settings_filter"
+        android:orderInCategory="100"
+        android:title="Filter"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_settings_import"
+        android:orderInCategory="100"
+        android:title="Import"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_settings_export"
+        android:orderInCategory="100"
+        android:title="Export"
+        app:showAsAction="never" />
+</menu>
